@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/api/calculate_kundli",
+      "dest": "/api/calculate_kundli.py"
+    },
+    {
+      "src": "/api/matchmaking",
+      "dest": "/api/matchmaking.py"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ]
+}
