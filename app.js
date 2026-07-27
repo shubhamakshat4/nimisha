@@ -159,11 +159,18 @@ async function runCalculations(dob, tob, lat, lon, tz) {
   const chartType = document.getElementById('chartTypeSelect').value || 'D1';
 
   try {
-    const res = await fetch('/api/calculate-kundli', {
+    let res = await fetch('/api/calculate_kundli', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ dob, tob, lat, lon, tz, ayanamsha })
     });
+    if (!res.ok) {
+      res = await fetch('/api/calculate-kundli', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dob, tob, lat, lon, tz, ayanamsha })
+      });
+    }
 
     if (res.ok) {
       currentChartData = await res.json();
