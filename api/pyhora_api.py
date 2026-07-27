@@ -92,5 +92,4 @@ def app(environ, start_response):
     start_response('200 OK', headers)
     return [json.dumps({"status": "PyHora Ephem Engine Live on Vercel"}).encode('utf-8')]
 
-# Export handler for Vercel WSGI / Serverless runtime compatibility
 handler = app

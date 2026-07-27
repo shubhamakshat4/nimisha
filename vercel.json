@@ -1,7 +1,5 @@
 {
   "rewrites": [
-    { "source": "/api/calculate-kundli", "destination": "/api/index.py" },
-    { "source": "/api/matchmaking", "destination": "/api/index.py" },
-    { "source": "/api/search-city", "destination": "/api/index.py" }
+    { "source": "/api/(.*)", "destination": "/api/pyhora_api.py" }
   ]
 }
