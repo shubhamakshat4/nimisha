@@ -171,7 +171,7 @@ async function runCalculations(dob, tob, lat, lon, tz) {
       throw new Error('API fallback');
     }
   } catch (err) {
-    currentChartData = PyHoraEngine.calculatePlanets(dob, tob, 'Place', ayanamsha);
+    currentChartData = PyHoraEngine.calculatePlanets(dob, tob, parseFloat(lat), parseFloat(lon), parseFloat(tz), 'Place', ayanamsha);
   }
 
   // Render All Astrological Components

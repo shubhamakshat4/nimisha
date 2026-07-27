@@ -144,44 +144,88 @@ class PyHoraEngine {
     return s;
   }
 
-  static calculatePlanets(dobStr, tobStr, pobStr = 'Place', ayanamshaType = 'lahiri') {
+  static calculatePlanets(dobStr, tobStr, lat = 28.6139, lon = 77.2090, tz = 5.5, pobStr = 'Place', ayanamshaType = 'lahiri') {
     const [year, month, day] = dobStr.split('-').map(Number);
     const [hour, minute] = tobStr.split(':').map(Number);
 
-    const dtYear = year + (month - 1) / 12.0 + (day - 1) / 365.25;
-    const lahiriAyanamsha = 23.853056 + (dtYear - 2000.0) * 0.01396389;
+    const totalLocalHours = hour + minute / 60.0;
+    let utcHours = totalLocalHours - tz;
+    let utcYear = year;
+    let utcMonth = month;
+    let utcDay = day;
 
-    const birthDate = new Date(Date.UTC(year, month - 1, day, hour, minute));
-    const dayOfYear = Math.floor((birthDate - new Date(Date.UTC(year, 0, 0))) / (1000 * 60 * 60 * 24));
+    if (utcHours < 0) {
+      utcHours += 24.0;
+      const prevDate = new Date(Date.UTC(year, month - 1, day - 1));
+      utcYear = prevDate.getUTCFullYear();
+      utcMonth = prevDate.getUTCMonth() + 1;
+      utcDay = prevDate.getUTCDate();
+    } else if (utcHours >= 24.0) {
+      utcHours -= 24.0;
+      const nextDate = new Date(Date.UTC(year, month - 1, day + 1));
+      utcYear = nextDate.getUTCFullYear();
+      utcMonth = nextDate.getUTCMonth() + 1;
+      utcDay = nextDate.getUTCDate();
+    }
 
-    const decimalHours = hour + minute / 60.0;
-    const gmst = (18.697374558 + 24.06570982441908 * (birthDate.getTime() / 86400000.0 - 10957.5)) % 24;
-    const lstDeg = ((gmst * 15.0) + 77.2090) % 360;
+    let m = utcMonth;
+    let y = utcYear;
+    if (m <= 2) { y -= 1; m += 12; }
+    const A = Math.floor(y / 100);
+    const B = 2 - A + Math.floor(A / 4);
+    const jd = Math.floor(365.25 * (y + 4716)) + Math.floor(30.6001 * (m + 1)) + utcDay + (utcHours / 24.0) + B - 1524.5;
+    const T = (jd - 2451545.0) / 36525.0;
 
+    let ayanamsha = 23.85709167 + 1.3969713 * T + 0.0003086 * T * T;
+    if (ayanamshaType === 'raman') ayanamsha -= 1.4;
+    else if (ayanamshaType === 'kp') ayanamsha += 0.10;
+
+    let gmstDeg = 280.46061837 + 360.98564736629 * (jd - 2451545.0) + 0.000387933 * T * T - (T * T * T / 38710000.0);
+    gmstDeg = (gmstDeg % 360.0 + 360.0) % 360.0;
+    
+    const lstDeg = (gmstDeg + lon + 360.0) % 360.0;
     const lstRad = (lstDeg * Math.PI) / 180.0;
-    const latRad = (28.6139 * Math.PI) / 180.0;
+    const latRad = (lat * Math.PI) / 180.0;
     const epsRad = (23.4392911 * Math.PI) / 180.0;
 
     const num = Math.cos(lstRad);
     const den = -Math.sin(lstRad) * Math.cos(epsRad) - Math.tan(latRad) * Math.sin(epsRad);
-    const ascTropDeg = (Math.atan2(num, den) * 180.0 / Math.PI + 360) % 360;
-    
-    const lagnaDeg = (ascTropDeg - lahiriAyanamsha + 360) % 360;
+    const ascTropDeg = (Math.atan2(num, den) * 180.0 / Math.PI + 360.0) % 360.0;
+    const lagnaDeg = (ascTropDeg - ayanamsha + 360.0) % 360.0;
     const lagnaSign = Math.floor(lagnaDeg / 30);
 
-    const sunTrop = ((dayOfYear * 0.9856) + (decimalHours * 0.041) + 279.0) % 360;
-    const moonTrop = ((sunTrop + (decimalHours * 0.54) + (dayOfYear * 13.176)) % 360);
-    const marsTrop = ((dayOfYear * 0.524) + 120.0) % 360;
-    const mercTrop = (sunTrop + 12.0) % 360;
-    const jupTrop = ((year * 30.35) + 140.0) % 360;
-    const venTrop = (sunTrop - 22.0 + 360) % 360;
-    const satTrop = ((year * 12.2) + 280.0) % 360;
+    const M_sun = ((357.52911 + 35999.05029 * T - 0.0001537 * T * T) * Math.PI) / 180.0;
+    const L0_sun = (280.46646 + 36000.76983 * T + 0.0003032 * T * T) % 360.0;
+    const C_sun = (1.914602 - 0.004817 * T) * Math.sin(M_sun) + (0.019993 - 0.000101 * T) * Math.sin(2 * M_sun) + 0.000289 * Math.sin(3 * M_sun);
+    const sunTrop = (L0_sun + C_sun + 360.0) % 360.0;
 
-    const jd = (birthDate.getTime() / 86400000.0) + 2440587.5;
-    const T = (jd - 2451545.0) / 36525.0;
-    const omegaTrop = (125.044547 - 1934.136261 * T + 0.002075 * T * T) % 360.0;
-    const rahuTrop = (omegaTrop + 360) % 360;
-    const ketuTrop = (rahuTrop + 180) % 360;
+    const L_moon = (218.3165 + 481267.8813 * T) % 360.0;
+    const M_moon = ((134.9634 + 477198.8675 * T) * Math.PI) / 180.0;
+    const F_moon = ((93.2721 + 483202.0175 * T) * Math.PI) / 180.0;
+    const D_moon = ((297.8502 + 445267.1114 * T) * Math.PI) / 180.0;
+    const moonTrop = (L_moon + 6.2886 * Math.sin(M_moon) + 1.2740 * Math.sin(2 * D_moon - M_moon) + 0.6583 * Math.sin(2 * D_moon) + 0.2136 * Math.sin(2 * M_moon) - 0.1851 * Math.sin(M_sun) - 0.1143 * Math.sin(2 * F_moon) + 360.0) % 360.0;
+
+    const M_mars = ((19.3730 + 19140.2993 * T) * Math.PI) / 180.0;
+    const L_mars = (355.4330 + 19140.2993 * T) % 360.0;
+    const marsTrop = (L_mars + 10.6912 * Math.sin(M_mars) + 0.6228 * Math.sin(2 * M_mars) + 360.0) % 360.0;
+
+    const M_merc = ((174.7948 + 149472.6747 * T) * Math.PI) / 180.0;
+    const mercTrop = (sunTrop + 6.3 * Math.sin(M_merc) + 360.0) % 360.0;
+
+    const M_jup = ((20.0202 + 3034.9057 * T) * Math.PI) / 180.0;
+    const L_jup = (34.3515 + 3034.9057 * T) % 360.0;
+    const jupTrop = (L_jup + 5.5549 * Math.sin(M_jup) + 0.1683 * Math.sin(2 * M_jup) + 360.0) % 360.0;
+
+    const M_ven = ((50.4161 + 58517.8156 * T) * Math.PI) / 180.0;
+    const venTrop = (sunTrop + 0.7758 * Math.sin(M_ven) - 15.0 + 360.0) % 360.0;
+
+    const M_sat = ((317.0207 + 1222.1138 * T) * Math.PI) / 180.0;
+    const L_sat = (50.0774 + 1222.1138 * T) % 360.0;
+    const satTrop = (L_sat + 6.3585 * Math.sin(M_sat) + 0.2204 * Math.sin(2 * M_sat) + 360.0) % 360.0;
+
+    const omegaTrop = (125.044547 - 1934.136261 * T + 0.002075 * T * T + 360.0) % 360.0;
+    const rahuTrop = omegaTrop;
+    const ketuTrop = (rahuTrop + 180.0) % 360.0;
 
     const planetList = [
       { name: "Lagna (Ascendant)", degTrop: ascTropDeg },
@@ -197,13 +241,13 @@ class PyHoraEngine {
     ];
 
     const planets = planetList.map(p => {
-      const sidDeg = (p.degTrop - lahiriAyanamsha + 360) % 360;
+      const sidDeg = (p.degTrop - ayanamsha + 360.0) % 360.0;
       const signIndex = Math.floor(sidDeg / 30);
       const degInSign = sidDeg % 30;
 
-      const nakshatraIndex = Math.floor(sidDeg / 13.333333) % 27;
+      const nakshatraIndex = Math.floor(sidDeg / (360.0 / 27.0)) % 27;
       const nakshatra = NAKSHATRAS[nakshatraIndex];
-      const pada = Math.floor((sidDeg % 13.333333) / 3.333333) + 1;
+      const pada = Math.floor((sidDeg % (360.0 / 27.0)) / (360.0 / 108.0)) + 1;
 
       let house = ((signIndex - lagnaSign + 12) % 12) + 1;
 
@@ -229,7 +273,7 @@ class PyHoraEngine {
       dob: dobStr,
       tob: tobStr,
       pob: pobStr,
-      ayanamsha: parseFloat(lahiriAyanamsha.toFixed(4)),
+      ayanamsha: parseFloat(ayanamsha.toFixed(4)),
       lagnaSign: lagnaSign,
       lagnaName: RASHI_NAMES[lagnaSign],
       planets: planets
