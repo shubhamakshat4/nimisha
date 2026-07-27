@@ -1589,3 +1589,195 @@ h1, h2, h3, h4, h5 {
   margin-bottom: 12px;
 }
 
+/* ==========================================================================
+   Mobile Responsive Optimization Block (Fixes Horizontal Scroll on Mobile)
+   ========================================================================== */
+
+/* Prevent Page-Level Horizontal Overflow on Mobile */
+html, body {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* Global Container & Card Constraints for Mobile */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 14px;
+    max-width: 100% !important;
+    overflow-x: hidden;
+  }
+
+  .section {
+    padding: 44px 0;
+    overflow-x: hidden;
+  }
+
+  .calculator-card, 
+  .horoscope-result-card,
+  .match-partner-box {
+    padding: 20px 14px !important;
+    border-radius: 16px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Kundli Chart Box & SVG Responsive Scaling */
+  .chart-box {
+    padding: 14px 8px !important;
+    border-radius: 14px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+
+  .north-chart-container {
+    width: 100% !important;
+    max-width: 330px !important;
+    height: auto !important;
+    aspect-ratio: 1 / 1 !important;
+    margin: 0 auto 12px !important;
+    box-sizing: border-box !important;
+  }
+
+  .north-chart-svg {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .chart-header-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .btn-group-charts {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-chart-select {
+    padding: 5px 10px;
+    font-size: 0.76rem;
+  }
+
+  .chart-legend-box {
+    gap: 6px 10px;
+    padding: 8px 10px;
+    font-size: 0.72rem;
+  }
+
+  /* Table Internal Horizontal Scroll Containment */
+  .chart-meta-box {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .table-responsive {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: block !important;
+    margin-bottom: 12px;
+    border-radius: var(--radius-sm);
+  }
+
+  .astro-table {
+    min-width: 440px !important; /* Table scrolls internally inside wrapper, NOT pushing the page right */
+    font-size: 0.82rem !important;
+  }
+
+  .astro-table th, 
+  .astro-table td {
+    padding: 8px 6px !important;
+  }
+
+  /* Tab Navigation Scroll Bar */
+  .tools-tab-nav {
+    display: flex !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 8px !important;
+    margin: 18px 0 16px !important;
+    scrollbar-width: none;
+  }
+
+  .tools-tab-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    padding: 8px 14px !important;
+    font-size: 0.84rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Forms & Grids on Mobile */
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .rashi-selector-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .featured-pkg {
+    transform: none !important;
+  }
+
+  .koot-breakdown-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .yogini-timeline-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  .score-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .zodiac-wheel-wrapper {
+    width: 270px !important;
+    height: 270px !important;
+    margin: 0 auto;
+  }
+
+  .wheel-center-avatar {
+    width: 130px !important;
+    height: 130px !important;
+  }
+}
+
+/* Extra Small Phones (<= 380px) */
+@media (max-width: 380px) {
+  .north-chart-container {
+    max-width: 280px !important;
+  }
+
+  .rashi-selector-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .tab-btn {
+    padding: 6px 10px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+
