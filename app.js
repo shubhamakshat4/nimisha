@@ -53,9 +53,48 @@ function setupAutocomplete(inputId, dropdownId, latId, lonId, tzId, badgeId) {
         const res = await fetch(`/api/search-city?q=${encodeURIComponent(val)}`);
         if (res.ok) {
           matches = await res.json();
+        } else {
+          matches = searchCities(val);
         }
       } catch (err) {
         matches = searchCities(val);
+      }
+
+      // If local search returns few results, query free client-side OpenStreetMap Nominatim API
+      if (!matches || matches.length < 3) {
+        try {
+          const apiRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(val)}&addressdetails=1&limit=6`);
+          if (apiRes.ok) {
+            const apiData = await apiRes.json();
+            const onlineMatches = apiData.map(item => {
+              const addr = item.address || {};
+              const city = addr.city || addr.town || addr.village || addr.county || item.display_name.split(',')[0];
+              const country = addr.country || '';
+              const state = addr.state || '';
+              const lon = parseFloat(item.lon);
+              const approxTz = Math.round((lon / 15) * 2) / 2;
+
+              return {
+                city: city,
+                state: state,
+                country: country,
+                display_name: item.display_name,
+                lat: parseFloat(item.lat),
+                lon: parseFloat(item.lon),
+                tz: (country === 'India') ? 5.5 : approxTz
+              };
+            });
+
+            const existing = new Set(matches.map(m => (m.city || '').toLowerCase()));
+            onlineMatches.forEach(om => {
+              if (om.city && !existing.has(om.city.toLowerCase())) {
+                matches.push(om);
+              }
+            });
+          }
+        } catch (e) {
+          // Keep local matches on error
+        }
       }
 
       if (!matches || matches.length === 0) {
