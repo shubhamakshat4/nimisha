@@ -1767,16 +1767,20 @@ html, body {
     padding: 8px 6px !important;
   }
 
-  /* Tab Navigation Scroll Bar */
+  /* Tab Navigation Mobile Wrapped Pill Container (Ensures ALL 5 options are 100% visible at first glance) */
   .tools-tab-nav {
     display: flex !important;
-    gap: 6px !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding-bottom: 8px !important;
-    margin: 18px 0 16px !important;
-    scrollbar-width: none;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px 6px !important;
+    overflow-x: visible !important;
+    white-space: normal !important;
+    border-bottom: none !important;
+    margin: 20px 0 18px !important;
+    padding: 10px 8px !important;
+    background: var(--bg-cream-alt) !important;
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--card-border) !important;
   }
 
   .tools-tab-nav::-webkit-scrollbar {
@@ -1785,8 +1789,32 @@ html, body {
 
   .tab-btn {
     padding: 8px 14px !important;
-    font-size: 0.84rem !important;
+    font-size: 0.82rem !important;
+    font-weight: 600 !important;
+    border-radius: 20px !important;
+    background: #ffffff !important;
+    border: 1px solid var(--card-border) !important;
+    color: var(--cosmic-blue) !important;
+    box-shadow: var(--shadow-sm) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    transition: all 0.25s ease !important;
+    white-space: nowrap !important;
+    text-align: center !important;
     flex-shrink: 0 !important;
+  }
+
+  .tab-btn:hover {
+    border-color: var(--primary-pink-dark) !important;
+    color: var(--primary-pink-dark) !important;
+  }
+
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--cosmic-blue), #1D2E50) !important;
+    color: var(--vedic-gold) !important;
+    border-color: var(--vedic-gold) !important;
+    box-shadow: 0 4px 12px rgba(17, 30, 56, 0.2) !important;
   }
 
   /* Forms & Grids on Mobile */
