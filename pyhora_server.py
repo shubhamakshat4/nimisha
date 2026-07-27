@@ -7,7 +7,7 @@ import json
 import os
 from pyhora_engine import calculate_kundli, calculate_guna_milan_full
 
-PORT = 8080
+PORT = int(os.environ.get('PORT', 8080))
 
 # Load offline city database once into memory
 CITIES_DB = []
