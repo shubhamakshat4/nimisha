@@ -1438,22 +1438,95 @@ h1, h2, h3, h4, h5 {
 
 /* Responsive Menu */
 @media (max-width: 900px) {
-  .hero-container { grid-template-columns: 1fr; text-align: center; }
-  .hero-credentials, .hero-cta-group { justify-content: center; }
-  .hamburger { display: block; }
+  .hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 28px;
+    padding: 0 16px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero-title {
+    font-size: 2.2rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 14px !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .hero-slogan {
+    font-size: 0.96rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .hero-credentials, .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hamburger {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-sm);
+    background: var(--primary-pink-light);
+    color: var(--cosmic-blue);
+    border: 1.5px solid var(--primary-pink);
+    font-size: 1.35rem;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .hamburger.active {
+    background: var(--cosmic-blue);
+    color: var(--vedic-gold);
+  }
+
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: 66px;
     left: -100%;
     width: 100%;
-    height: calc(100vh - 70px);
-    background: #fff;
+    height: calc(100vh - 66px);
+    background: rgba(252, 251, 247, 0.98);
+    backdrop-filter: blur(16px);
     flex-direction: column;
-    padding: 40px 20px;
-    transition: var(--transition);
-    box-shadow: var(--shadow-lg);
+    padding: 24px 20px;
+    gap: 12px;
+    transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(17, 30, 56, 0.2);
+    z-index: 2500;
+    overflow-y: auto;
+    align-items: stretch;
+    text-align: center;
   }
-  .nav-menu.active { left: 0; }
+
+  .nav-menu.active {
+    left: 0 !important;
+  }
+
+  .nav-menu li {
+    width: 100%;
+  }
+
+  .nav-link {
+    display: block;
+    width: 100%;
+    padding: 12px 16px !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-sm) !important;
+    background: #fff;
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-sm);
+  }
 }
 
 /* Photo Placeholder Frame & Fallback Styling - Rectangular Portrait Aspect */

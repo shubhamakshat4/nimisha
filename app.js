@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentChartData = null;
 
   // Initialize UI components
+  initMobileMenu();
   initCityAutocomplete();
   initRashiWheel();
   initDailyHoroscope();
@@ -17,6 +18,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial Calculation on Load (New Delhi, India: 28.6139, 77.2090, UTC+5.5)
   runCalculations('1995-08-25', '10:30', 28.6139, 77.2090, 5.5);
 });
+
+/**
+ * Mobile Hamburger Navigation Menu Toggle
+ */
+function initMobileMenu() {
+  const hamburger = document.getElementById('hamburgerBtn');
+  const navMenu = document.getElementById('navMenu');
+
+  if (!hamburger || !navMenu) return;
+
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navMenu.classList.toggle('active');
+    hamburger.classList.toggle('active');
+  });
+
+  // Close menu when clicking outside or clicking any nav link
+  document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    }
+  });
+
+  const navLinks = navMenu.querySelectorAll('a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
+      hamburger.classList.remove('active');
+    });
+  });
+}
 
 /**
  * City Search & Place of Birth Autocomplete Dropdown
