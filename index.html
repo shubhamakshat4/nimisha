@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acharya Nimisha Bhardwaj | Ancient Jyotish, Modern Guidance</title>
+  <meta name="description" content="Official Portal of Acharya Nimisha Bhardwaj (Sidhant Jyotish Acharya, Central Sanskrit University). 8th Generation Vedic Astrologer offering comprehensive Kundli readings, Vimshottari & Yogini Dasha, Ashtakvarga, and Matchmaking.">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="top-bar">
+    <span><i class="fa-solid fa-om"></i> तमसो मा ज्योतिर्गमय — Lead Me From Darkness To Light</span>
+    <span class="top-contact"><i class="fa-solid fa-phone"></i> +91 8602110010 &nbsp;|&nbsp; <i class="fa-solid fa-envelope"></i> n.astro3008@gmail.com</span>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-symbol">
+          <i class="fa-solid fa-sun-plant-wilt"></i>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Nimisha Bhardwaj</span>
+          <span class="brand-title">Acharya in Sidhant Jyotish</span>
+        </div>
+      </a>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#horoscope" class="nav-link"><i class="fa-solid fa-sparkles" style="color:var(--vedic-gold);"></i> Daily Rashifal</a></li>
+        <li><a href="#birth-chart-calculator" class="nav-link highlight-link"><i class="fa-solid fa-dharmachakra"></i> Free Kundli</a></li>
+        <li><a href="#services" class="nav-link">Consultations</a></li>
+        <li><a href="#matchmaking" class="nav-link">Matchmaking</a></li>
+        <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+        <li><a href="#contact" class="nav-link btn-nav-book">Book Guidance</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Streamlined Text & Celestial Lotus Rashi Wheel -->
+  <header class="hero-section">
+    <div class="hero-bg-overlay"></div>
+    <div class="hero-container">
+      
+      <!-- Left Column: Streamlined Concise Text & CTA -->
+      <div class="hero-content">
+        <div class="lineage-badge">
+          <i class="fa-solid fa-om"></i> Ancient Jyotish, Modern Guidance
+        </div>
+        <h1 class="hero-title">Empowering Lives Through<br><span class="gradient-text">Authentic Vedic Wisdom</span></h1>
+        <p class="hero-slogan">"Eliminating fears and superstitions through scientific Sidhant Jyotish, mathematical precision, and compassionate guidance."</p>
+        
+        <div class="hero-credentials" style="margin-bottom:24px;">
+          <div class="cred-chip"><i class="fa-solid fa-graduation-cap"></i> Sidhant Jyotish Acharya (CSU)</div>
+          <div class="cred-chip"><i class="fa-solid fa-star-of-david"></i> 8th Generation Heritage</div>
+        </div>
+
+        <div class="hero-cta-group">
+          <a href="#birth-chart-calculator" class="btn btn-primary"><i class="fa-solid fa-wand-magic-sparkles"></i> Free Birth Chart Calculator</a>
+          <button class="btn btn-secondary open-booking-modal"><i class="fa-solid fa-calendar-check"></i> Book Guidance</button>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Sun Core & 12 Rashi Zodiac Wheel -->
+      <div class="hero-visual">
+        <div class="celestial-system">
+          <div class="sun-core">
+            <div class="sun-glow"></div>
+            <i class="fa-solid fa-sun"></i>
+          </div>
+          <div class="lotus-svg-container">
+            <svg viewBox="0 0 100 100" class="lotus-svg">
+              <path d="M50,15 C55,35 75,45 85,50 C75,55 55,65 50,85 C45,65 25,55 15,50 C25,45 45,35 50,15 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+              <circle cx="50" cy="50" r="38" fill="none" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 2"/>
+            </svg>
+          </div>
+          <div class="rashi-wheel" id="rashiWheel">
+            <div class="rashi-sector" style="--i:0;" data-rashi="Mesha (Aries)"><span class="rashi-icon">♈</span></div>
+            <div class="rashi-sector" style="--i:1;" data-rashi="Vrishabha (Taurus)"><span class="rashi-icon">♉</span></div>
+            <div class="rashi-sector" style="--i:2;" data-rashi="Mithuna (Gemini)"><span class="rashi-icon">♊</span></div>
+            <div class="rashi-sector" style="--i:3;" data-rashi="Karka (Cancer)"><span class="rashi-icon">♋</span></div>
+            <div class="rashi-sector" style="--i:4;" data-rashi="Simha (Leo)"><span class="rashi-icon">♌</span></div>
+            <div class="rashi-sector" style="--i:5;" data-rashi="Kanya (Virgo)"><span class="rashi-icon">♍</span></div>
+            <div class="rashi-sector" style="--i:6;" data-rashi="Tula (Libra)"><span class="rashi-icon">♎</span></div>
+            <div class="rashi-sector" style="--i:7;" data-rashi="Vrishchika (Scorpio)"><span class="rashi-icon">♏</span></div>
+            <div class="rashi-sector" style="--i:8;" data-rashi="Dhanu (Sagittarius)"><span class="rashi-icon">♐</span></div>
+            <div class="rashi-sector" style="--i:9;" data-rashi="Makara (Capricorn)"><span class="rashi-icon">♑</span></div>
+            <div class="rashi-sector" style="--i:10;" data-rashi="Kumbha (Aquarius)"><span class="rashi-icon">♒</span></div>
+            <div class="rashi-sector" style="--i:11;" data-rashi="Meena (Pisces)"><span class="rashi-icon">♓</span></div>
+          </div>
+        </div>
+        <div class="wheel-hint"><i class="fa-solid fa-circle-info"></i> Interactive 12 Rashi & 27 Nakshatra Zodiac Wheel</div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Lineage & Core Philosophy Section -->
+  <section class="section lineage-section" id="about">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Sacred Knowledge & Modern Mindset</span>
+        <h2 class="section-title">8th Generation Astrological Heritage</h2>
+        <p class="section-desc">Carrying forward centuries of Vedic wisdom, mathematical astronomy (Ganit), and meditative insights passed down through generations of illustrious masters.</p>
+        <div class="title-divider"><span>✦</span></div>
+      </div>
+
+      <!-- Primary Featured Consultant Spotlight Card (Acharya Nimisha Bhardwaj Ji - Prominent & Larger) -->
+      <div class="nimisha-featured-card">
+        <div style="display:flex; justify-content:center;">
+          <div class="person-photo-frame" style="width:170px; height:215px; border:4px solid var(--vedic-gold); margin:0;">
+            <img src="images/nimisha-bhardwaj.jpeg" alt="Acharya Nimisha Bhardwaj" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-overlay" style="display:none;">
+              <i class="fa-solid fa-user-graduate"></i>
+              <span>Acharya Nimisha Ji<br><small>(nimisha-bhardwaj.jpeg)</small></span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="featured-consultant-badge"><i class="fa-solid fa-star"></i> 8th Generation Sidhant Jyotish Acharya</div>
+          <h2 style="color:var(--cosmic-blue); margin:4px 0 6px 0; font-size:2rem; font-family:var(--font-serif);">Acharya Nimisha Bhardwaj</h2>
+          <p style="color:var(--primary-pink-dark); font-weight:700; font-size:1rem; margin-bottom:14px;">Sidhant Jyotish Acharya (CSU) & Academic Scholar</p>
+          <p style="font-size:0.96rem; line-height:1.65; color:var(--text-dark); margin-bottom:16px;">
+            Equipped with a prestigious <strong>Acharya Degree in Sidhant Jyotish</strong> from Central Sanskrit University alongside formal higher education degrees in <strong>Economics, Psychology, and English</strong>. She is dedicated to eliminating fears and superstitions around astrology, synthesizing deep astronomical precision with empathetic, non-fatalistic counseling.
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <span class="cred-chip" style="font-size:0.8rem; background:var(--bg-cream-alt);"><i class="fa-solid fa-graduation-cap"></i> Sidhant Jyotish Acharya</span>
+            <span class="cred-chip" style="font-size:0.8rem; background:var(--bg-cream-alt);"><i class="fa-solid fa-book-open"></i> B.A. Economics, Psychology & English</span>
+            <span class="cred-chip" style="font-size:0.8rem; background:var(--bg-cream-alt);"><i class="fa-solid fa-clock-rotate-left"></i> 7+ Years Active Counseling</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supporting Heritage Lineage Masters Grid (Father & Grandfather - Smaller Cards) -->
+      <div style="text-center; margin:32px 0 16px 0;">
+        <h3 class="text-center" style="font-size:1.4rem; color:var(--cosmic-blue);"><i class="fa-solid fa-hands-holding-circle" style="color:var(--vedic-gold);"></i> Guiding Lineage Masters</h3>
+      </div>
+
+      <div class="lineage-grid">
+        <!-- Card 2: Shri Tripurari Sharma Ji (Father) -->
+        <div class="lineage-card glass-card text-center" style="padding:24px 18px; border-top:3px solid var(--vedic-gold);">
+          <span class="relation-badge"><i class="fa-solid fa-user"></i> Father</span>
+          <div class="person-photo-frame" style="width:125px; height:160px; margin-bottom:12px;">
+            <img src="images/tripurari-sharma.jpeg" alt="Shri Tripurari Sharma Ji" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-overlay" style="display:none;">
+              <i class="fa-solid fa-om"></i>
+              <span>Shri Tripurari Sharma Ji<br><small>(tripurari-sharma.jpeg)</small></span>
+            </div>
+          </div>
+          <h3 style="color:var(--cosmic-blue); margin-bottom:2px; font-size:1.15rem;">Shri Tripurari Sharma Ji</h3>
+          <p style="color:var(--primary-pink-dark); font-weight:700; font-size:0.82rem; margin-bottom:10px;">Father — Renowned Astrologer & Senior Meditation Trainer (Art of Living)</p>
+          <p style="font-size:0.88rem; line-height:1.55; color:var(--text-dark);">Celebrated as <strong>one of the finest astrologers of current times</strong> and a revered <strong>Senior Meditation Trainer with the Art of Living</strong>. He inspires thousands through the synthesis of meditative awareness, Pranayama, and profound Jyotish wisdom.</p>
+        </div>
+
+        <!-- Card 3: Pandit Gopi Kishan Sharma Ji (Grandfather) -->
+        <div class="lineage-card glass-card text-center" style="padding:24px 18px;">
+          <span class="relation-badge"><i class="fa-solid fa-user-shield"></i> Grandfather</span>
+          <div class="person-photo-frame" style="width:125px; height:160px; margin-bottom:12px;">
+            <img src="images/gopi-kishan-sharma.jpeg" alt="Pandit Gopi Kishan Sharma Ji" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-overlay" style="display:none;">
+              <i class="fa-solid fa-scroll"></i>
+              <span>Pandit Gopi Kishan Sharma Ji<br><small>(gopi-kishan-sharma.jpeg)</small></span>
+            </div>
+          </div>
+          <h3 style="color:var(--cosmic-blue); margin-bottom:2px; font-size:1.15rem;">Pandit Gopi Kishan Sharma Ji</h3>
+          <p style="color:var(--primary-pink-dark); font-weight:700; font-size:0.82rem; margin-bottom:10px;">Grandfather — 8th Generation Lineage Master</p>
+          <p style="font-size:0.88rem; line-height:1.55; color:var(--text-dark);">Legendary master of both <em>Ganit</em> (mathematical astronomy) and <em>Hora Jyotish</em> (predictive astrology). Known for his rigorous spiritual discipline (Tapa) and timeless astrological principles passed down to the family.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Specialized Consultation Domains Section -->
+  <section class="section domains-section" id="domains" style="background:var(--bg-cream-alt); padding:60px 0;">
+    <div class="container">
+      <div class="section-header text-center" style="margin-bottom:32px;">
+        <span class="section-subtitle"><i class="fa-solid fa-dharmachakra" style="color:var(--vedic-gold);"></i> Areas of Expertise</span>
+        <h2 class="section-title">Specialized Consultation Domains</h2>
+        <p class="section-desc">Comprehensive Astrological Solutions Rooted in Authentic Sidhant & Hora Jyotish</p>
+        <div class="title-divider"><span>✦</span></div>
+      </div>
+      
+      <div class="domains-grid">
+        <div class="domain-item"><i class="fa-solid fa-briefcase"></i> Career, Business & Financial Guidance</div>
+        <div class="domain-item"><i class="fa-solid fa-gem"></i> Remedial Astrology (Gemstones, Mantras, Pujas)</div>
+        <div class="domain-item"><i class="fa-solid fa-calendar-star"></i> Annual Horoscope / Varshaphal Predictions</div>
+        <div class="domain-item"><i class="fa-solid fa-circle-question"></i> KP / Prashna (Horary) Quick Queries</div>
+        <div class="domain-item"><i class="fa-solid fa-baby-carriage"></i> Childbirth & Family Astrology</div>
+        <div class="domain-item"><i class="fa-solid fa-building-columns"></i> Corporate & Business Advisory</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Consultation Services & Packages Section -->
+  <section class="section services-section" id="services">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Tailored Consultation Offerings</span>
+        <h2 class="section-title">Detailed Service Packages & Pricing</h2>
+        <p class="section-desc">Personalized, in-depth astrological guidance via Phone / WhatsApp voice calls or written comprehensive PDF reports.</p>
+        <div class="title-divider"><span>✦</span></div>
+      </div>
+
+      <div class="pricing-grid">
+        
+        <!-- Package 1 -->
+        <div class="pricing-card glass-card">
+          <div class="card-badge">Single Kundli</div>
+          <h3 class="package-name">Comprehensive Birth Chart Reading</h3>
+          <div class="package-price">₹1,100 <span class="price-duration">/ 25 Mins</span></div>
+          <p class="package-desc">Single Kundli in-depth analysis focusing on personal career, finance, health, and remedies.</p>
+          <ul class="package-features">
+            <li><i class="fa-solid fa-check"></i> 1 Birth Chart (D1, D9, D10) Deep Dive</li>
+            <li><i class="fa-solid fa-check"></i> Current Mahadasha & Transit Analysis</li>
+            <li><i class="fa-solid fa-check"></i> Authentic Vedic Gemstone & Mantra Remedies</li>
+            <li><i class="fa-solid fa-check"></i> Mode: Voice Call or PDF Report</li>
+          </ul>
+          <button class="btn btn-primary full-width select-package-btn" data-pkg="Comprehensive Birth Chart Reading (₹1,100 / 25 mins)">Book Package 1</button>
+        </div>
+
+        <!-- Package 2 Featured -->
+        <div class="pricing-card glass-card featured-pkg">
+          <div class="featured-ribbon">Most Popular</div>
+          <div class="card-badge">Dual Kundli</div>
+          <h3 class="package-name">Dual Chart / Extended Guidance</h3>
+          <div class="package-price">₹2,100 <span class="price-duration">/ 45 Mins</span></div>
+          <p class="package-desc">Detailed evaluation of 2 Birth Charts for personal, partner, or parent-child guidance.</p>
+          <ul class="package-features">
+            <li><i class="fa-solid fa-check"></i> 2 Birth Charts Detailed Comparison</li>
+            <li><i class="fa-solid fa-check"></i> Career, Business & Financial Projections</li>
+            <li><i class="fa-solid fa-check"></i> Annual Horoscope / Varshaphal Insights</li>
+            <li><i class="fa-solid fa-check"></i> Dedicated Q&A Time During Call</li>
+          </ul>
+          <button class="btn btn-gold full-width select-package-btn" data-pkg="Dual Chart Reading (₹2,100 / 45 mins)">Book Package 2</button>
+        </div>
+
+        <!-- Package 3 -->
+        <div class="pricing-card glass-card">
+          <div class="card-badge">Matchmaking</div>
+          <h3 class="package-name">Love, Marriage & Matchmaking</h3>
+          <div class="package-price">₹2,499 <span class="price-duration">/ 45 Mins</span></div>
+          <p class="package-desc">Complete Ashtakoot Guna Milan, Manglik Dosha check, and marital longevity evaluation.</p>
+          <ul class="package-features">
+            <li><i class="fa-solid fa-check"></i> 36 Guna Milan & Nadi Dosha Analysis</li>
+            <li><i class="fa-solid fa-check"></i> Relationship Longevity & Temperament</li>
+            <li><i class="fa-solid fa-check"></i> Neutralization Remedies for Doshas</li>
+            <li><i class="fa-solid fa-check"></i> Written Compatibility Report Included</li>
+          </ul>
+          <button class="btn btn-primary full-width select-package-btn" data-pkg="Matchmaking & Compatibility (₹2,499 / 45 mins)">Book Package 3</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Free Vedic Birth Chart & Kundli Calculator Section -->
+  <section class="section pyhora-section" id="birth-chart-calculator">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--vedic-gold);"></i> Instant Planetary Calculation</span>
+        <h2 class="section-title">Free Vedic Birth Chart & Kundli Calculator</h2>
+        <p class="section-desc">Discover your exact Lagna (Ascendant), Moon Sign, Planetary Positions, Vimshottari & Yogini Dashas, Ashtakvarga, and Gochar Transits based on <strong>Lahiri / Chitra Paksha Ayanamsha</strong>.</p>
+        <div class="title-divider"><span>✦</span></div>
+      </div>
+
+      <!-- Quick Client Intake Form for Chart Generation -->
+      <div class="calculator-card glass-card">
+        <form id="kundliForm" class="kundli-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="clientName"><i class="fa-solid fa-user"></i> Full Name</label>
+              <input type="text" id="clientName" placeholder="e.g. Ananya Sharma" required value="Ananya Sharma">
+            </div>
+            <div class="form-group">
+              <label for="dob"><i class="fa-solid fa-calendar-days"></i> Date of Birth</label>
+              <input type="date" id="dob" required value="1995-08-25">
+            </div>
+            <div class="form-group">
+              <label for="tob"><i class="fa-solid fa-clock"></i> Time of Birth</label>
+              <input type="time" id="tob" required value="10:30">
+            </div>
+
+            <!-- Place of Birth Autocomplete & Lat/Long calculation -->
+            <div class="form-group pob-autocomplete-wrapper">
+              <label for="pobInput"><i class="fa-solid fa-location-dot"></i> Place of Birth (Type city for Lat/Long)</label>
+              <input type="text" id="pobInput" placeholder="Type city (e.g. New Delhi, Janakpur, London)" autocomplete="off" required value="New Delhi, India">
+              <input type="hidden" id="pobLat" value="28.6139">
+              <input type="hidden" id="pobLon" value="77.2090">
+              <input type="hidden" id="pobTz" value="5.5">
+              
+              <div class="pob-dropdown hidden" id="pobDropdown"></div>
+              
+              <div class="lat-lon-badge" id="latLonBadge">
+                <i class="fa-solid fa-compass"></i> Lat: 28.6139° N, Lon: 77.2090° E (UTC +5:30)
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row secondary-inputs">
+            <div class="form-group">
+              <label for="ayanamshaSelect"><i class="fa-solid fa-gear"></i> Preferred Ayanamsha</label>
+              <select id="ayanamshaSelect">
+                <option value="lahiri" selected>Lahiri / Chitra Paksha (Standard)</option>
+                <option value="raman">BV Raman</option>
+                <option value="kp">KP Ayanamsha</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="chartTypeSelect"><i class="fa-solid fa-chart-pie"></i> Primary View Chart</label>
+              <select id="chartTypeSelect">
+                <option value="D1" selected>D1 - Lagna / Birth Chart</option>
+                <option value="D9">D9 - Navamsha (Dharma & Marriage)</option>
+                <option value="D10">D10 - Dashamsha (Career & Power)</option>
+                <option value="D7">D7 - Saptamsha (Progeny & Children)</option>
+              </select>
+            </div>
+            <div class="form-group btn-group-align">
+              <button type="submit" class="btn btn-primary btn-calc-submit"><i class="fa-solid fa-calculator"></i> Calculate Kundli & Dashas</button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Dynamic Output Tabs -->
+        <div class="tools-tab-nav" id="toolsTabNav">
+          <button class="tab-btn active" data-tab="tab-chart"><i class="fa-solid fa-diamond"></i> North Indian Kundli</button>
+          <button class="tab-btn" data-tab="tab-vimshottari"><i class="fa-solid fa-timeline"></i> Vimshottari Dasha</button>
+          <button class="tab-btn" data-tab="tab-yogini"><i class="fa-solid fa-hourglass-half"></i> Yogini Dasha</button>
+          <button class="tab-btn" data-tab="tab-ashtakvarga"><i class="fa-solid fa-table-cells"></i> Ashtakvarga Graph</button>
+          <button class="tab-btn" data-tab="tab-gochar"><i class="fa-solid fa-globe"></i> Planetary Transits</button>
+        </div>
+
+        <!-- Tab Content Areas -->
+        <div class="tab-content-wrapper">
+          
+          <!-- TAB 1: North Indian Diamond Chart -->
+          <div class="tab-content active" id="tab-chart">
+            <div class="chart-display-grid">
+              <div class="chart-box">
+                <div class="chart-header-bar">
+                  <h4 class="chart-box-title" id="activeChartTitle">D1 Lagna Chart (North Indian Diamond Style)</h4>
+                  <!-- Chart Quick Switch Buttons -->
+                  <div class="btn-group-charts" id="chartTypeGroup">
+                    <button class="btn-chart-select active" data-chart="D1">D1 Lagna</button>
+                    <button class="btn-chart-select" data-chart="D9">D9 Navamsha</button>
+                    <button class="btn-chart-select" data-chart="D10">D10 Dashamsha</button>
+                    <button class="btn-chart-select" data-chart="D7">D7 Saptamsha</button>
+                  </div>
+                </div>
+
+                <!-- Interactive North Indian Chart Container -->
+                <div class="north-chart-container" id="northChartContainer">
+                  <!-- Rendered via JavaScript -->
+                </div>
+
+                <!-- Legend Bar -->
+                <div class="chart-legend-box mt-3">
+                  <span><i class="fa-solid fa-circle" style="color:#111E38;"></i> Rashi Badges (1=Mesha ... 12=Meena)</span>
+                  <span><i class="fa-solid fa-square" style="color:#D4AF37;"></i> Asc</span>
+                  <span><i class="fa-solid fa-square" style="color:#E67E22;"></i> Su</span>
+                  <span><i class="fa-solid fa-square" style="color:#2980B9;"></i> Mo</span>
+                  <span><i class="fa-solid fa-square" style="color:#C0392B;"></i> Ma</span>
+                  <span><i class="fa-solid fa-square" style="color:#27AE60;"></i> Me</span>
+                  <span><i class="fa-solid fa-square" style="color:#B38F26;"></i> Ju</span>
+                  <span><i class="fa-solid fa-square" style="color:#C9728B;"></i> Ve</span>
+                  <span><i class="fa-solid fa-square" style="color:#111E38;"></i> Sa</span>
+                  <span><i class="fa-solid fa-square" style="color:#8E44AD;"></i> Ra</span>
+                  <span><i class="fa-solid fa-square" style="color:#7F8C8D;"></i> Ke</span>
+                </div>
+
+                <!-- D10 Career Insights Banner -->
+                <div id="d10CareerInsights" class="hidden"></div>
+              </div>
+
+              <div class="chart-meta-box">
+                <h4>Planetary Positions & Nakshatras</h4>
+                <div class="table-responsive">
+                  <table class="astro-table" id="planetPositionsTable">
+                    <thead>
+                      <tr>
+                        <th>Planet</th>
+                        <th>Sign (Rashi)</th>
+                        <th>Degrees</th>
+                        <th>Nakshatra</th>
+                        <th>Pada</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- Rendered by JS -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Vimshottari Dasha Timeline -->
+          <div class="tab-content" id="tab-vimshottari">
+            <div class="dasha-container">
+              <h3>Vimshottari Mahadasha & Antardasha Timeline</h3>
+              <p class="dasha-sub">120-Year Vedic Cycle based on Moon Nakshatra at time of birth.</p>
+              <div class="dasha-timeline-list" id="vimshottariList">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: Yogini Dasha Calculator -->
+          <div class="tab-content" id="tab-yogini">
+            <div class="dasha-container">
+              <h3>Yogini Dasha Timeline (36-Year Cycle)</h3>
+              <p class="dasha-sub">Mangala, Pingala, Dhanya, Bhramari, Bhadrika, Ulka, Siddha & Sankata cycles.</p>
+              <div class="yogini-timeline-grid" id="yoginiGrid">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: Ashtakvarga Tables & Graph -->
+          <div class="tab-content" id="tab-ashtakvarga">
+            <div class="ashtakvarga-container">
+              <h3>Bhinna Ashtakvarga (BAV) & Sarvashtakvarga (SAV) Matrix</h3>
+              <p class="dasha-sub">House strength points out of 56 to measure prosperity, health & career peaks.</p>
+              <div class="sav-graph-container" id="savGraph">
+                <!-- Rendered by JS SVG Graph -->
+              </div>
+              <div class="table-responsive mt-4">
+                <table class="astro-table" id="ashtakvargaTable">
+                  <!-- Rendered by JS -->
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 5: Planetary Transits (Gochar) -->
+          <div class="tab-content" id="tab-gochar">
+            <div class="gochar-container">
+              <h3>Live Planetary Transits (Gochar Insights)</h3>
+              <p class="dasha-sub">Current positions of slow and fast-moving planets and house alignment.</p>
+              <div class="gochar-cards-grid" id="gocharGrid">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Automated Kundli Matchmaking (Ashtakoot Guna Milan) Section -->
+  <section class="section matchmaking-section" id="matchmaking">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle">Vedic Marriage Compatibility</span>
+        <h2 class="section-title">Automated Ashtakoot Kundli Matching</h2>
+        <p class="section-desc">Calculate 36 Guna Milan (Varna, Vashya, Tara, Yoni, Graha Maitri, Gana, Bhakoot & Nadi scores) for marital harmony.</p>
+        <div class="title-divider"><span>✦</span></div>
+      </div>
+
+      <div class="match-card glass-card">
+        <form id="matchmakingForm" class="match-form">
+          <div class="match-grid">
+            <!-- Boy Details -->
+            <div class="match-partner-box">
+              <h4><i class="fa-solid fa-mars"></i> Groom (Boy's Details)</h4>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="boyName" placeholder="Groom Name" value="Aarav Sharma" required>
+              </div>
+              <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" id="boyDob" value="1993-04-12" required>
+              </div>
+              <div class="form-group">
+                <label>Moon Sign (Rashi)</label>
+                <select id="boyRashi">
+                  <option value="0">Mesha (Aries)</option>
+                  <option value="1">Vrishabha (Taurus)</option>
+                  <option value="2">Mithuna (Gemini)</option>
+                  <option value="3" selected>Karka (Cancer)</option>
+                  <option value="4">Simha (Leo)</option>
+                  <option value="5">Kanya (Virgo)</option>
+                  <option value="6">Tula (Libra)</option>
+                  <option value="7">Vrishchika (Scorpio)</option>
+                  <option value="8">Dhanu (Sagittarius)</option>
+                  <option value="9">Makara (Capricorn)</option>
+                  <option value="10">Kumbha (Aquarius)</option>
+                  <option value="11">Meena (Pisces)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Nakshatra</label>
+                <select id="boyNakshatra">
+                  <option value="Pushya" selected>Pushya (#8 - Karka)</option>
+                  <option value="Ashwini">Ashwini (#1 - Mesha)</option>
+                  <option value="Bharani">Bharani (#2 - Mesha)</option>
+                  <option value="Krittika">Krittika (#3 - Mesha/Vrishabha)</option>
+                  <option value="Rohini">Rohini (#4 - Vrishabha)</option>
+                  <option value="Mrigashira">Mrigashira (#5 - Vrishabha/Mithuna)</option>
+                  <option value="Arudra">Arudra (#6 - Mithuna)</option>
+                  <option value="Punarvasu">Punarvasu (#7 - Mithuna/Karka)</option>
+                  <option value="Pushya">Pushya (#8 - Karka)</option>
+                  <option value="Ashlesha">Ashlesha (#9 - Karka)</option>
+                  <option value="Magha">Magha (#10 - Simha)</option>
+                  <option value="Purva Phalguni">Purva Phalguni (#11 - Simha)</option>
+                  <option value="Uttara Phalguni">Uttara Phalguni (#12 - Simha/Kanya)</option>
+                  <option value="Hastha">Hastha (#13 - Kanya)</option>
+                  <option value="Chitra">Chitra (#14 - Kanya/Tula)</option>
+                  <option value="Swati">Swati (#15 - Tula)</option>
+                  <option value="Vishakha">Vishakha (#16 - Tula/Vrishchika)</option>
+                  <option value="Anuradha">Anuradha (#17 - Vrishchika)</option>
+                  <option value="Jyeshtha">Jyeshtha (#18 - Vrishchika)</option>
+                  <option value="Mula">Mula (#19 - Dhanu)</option>
+                  <option value="Purva Ashadha">Purva Ashadha (#20 - Dhanu)</option>
+                  <option value="Uttara Ashadha">Uttara Ashadha (#21 - Dhanu/Makara)</option>
+                  <option value="Shravana">Shravana (#22 - Makara)</option>
+                  <option value="Dhanishta">Dhanishta (#23 - Makara/Kumbha)</option>
+                  <option value="Shatabhisha">Shatabhisha (#24 - Kumbha)</option>
+                  <option value="Purva Bhadrapada">Purva Bhadrapada (#25 - Kumbha/Meena)</option>
+                  <option value="Uttara Bhadrapada">Uttara Bhadrapada (#26 - Meena)</option>
+                  <option value="Revati">Revati (#27 - Meena)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Heart Divider -->
+            <div class="match-vs-divider">
+              <div class="heart-icon"><i class="fa-solid fa-heart"></i></div>
+            </div>
+
+            <!-- Girl Details -->
+            <div class="match-partner-box">
+              <h4><i class="fa-solid fa-venus"></i> Bride (Girl's Details)</h4>
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="girlName" placeholder="Bride Name" value="Priya Verma" required>
+              </div>
+              <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date" id="girlDob" value="1995-11-28" required>
+              </div>
+              <div class="form-group">
+                <label>Moon Sign (Rashi)</label>
+                <select id="girlRashi">
+                  <option value="0">Mesha (Aries)</option>
+                  <option value="1">Vrishabha (Taurus)</option>
+                  <option value="2">Mithuna (Gemini)</option>
+                  <option value="3">Karka (Cancer)</option>
+                  <option value="4">Simha (Leo)</option>
+                  <option value="5">Kanya (Virgo)</option>
+                  <option value="6">Tula (Libra)</option>
+                  <option value="7">Vrishchika (Scorpio)</option>
+                  <option value="8" selected>Dhanu (Sagittarius)</option>
+                  <option value="9">Makara (Capricorn)</option>
+                  <option value="10">Kumbha (Aquarius)</option>
+                  <option value="11">Meena (Pisces)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Nakshatra</label>
+                <select id="girlNakshatra">
+                  <option value="Mula" selected>Mula (#19 - Dhanu)</option>
+                  <option value="Ashwini">Ashwini (#1 - Mesha)</option>
+                  <option value="Bharani">Bharani (#2 - Mesha)</option>
+                  <option value="Krittika">Krittika (#3 - Mesha/Vrishabha)</option>
+                  <option value="Rohini">Rohini (#4 - Vrishabha)</option>
+                  <option value="Mrigashira">Mrigashira (#5 - Vrishabha/Mithuna)</option>
+                  <option value="Arudra">Arudra (#6 - Mithuna)</option>
+                  <option value="Punarvasu">Punarvasu (#7 - Mithuna/Karka)</option>
+                  <option value="Pushya">Pushya (#8 - Karka)</option>
+                  <option value="Ashlesha">Ashlesha (#9 - Karka)</option>
+                  <option value="Magha">Magha (#10 - Simha)</option>
+                  <option value="Purva Phalguni">Purva Phalguni (#11 - Simha)</option>
+                  <option value="Uttara Phalguni">Uttara Phalguni (#12 - Simha/Kanya)</option>
+                  <option value="Hastha">Hastha (#13 - Kanya)</option>
+                  <option value="Chitra">Chitra (#14 - Kanya/Tula)</option>
+                  <option value="Swati">Swati (#15 - Tula)</option>
+                  <option value="Vishakha">Vishakha (#16 - Tula/Vrishchika)</option>
+                  <option value="Anuradha">Anuradha (#17 - Vrishchika)</option>
+                  <option value="Jyeshtha">Jyeshtha (#18 - Vrishchika)</option>
+                  <option value="Mula">Mula (#19 - Dhanu)</option>
+                  <option value="Purva Ashadha">Purva Ashadha (#20 - Dhanu)</option>
+                  <option value="Uttara Ashadha">Uttara Ashadha (#21 - Dhanu/Makara)</option>
+                  <option value="Shravana">Shravana (#22 - Makara)</option>
+                  <option value="Dhanishta">Dhanishta (#23 - Makara/Kumbha)</option>
+                  <option value="Shatabhisha">Shatabhisha (#24 - Kumbha)</option>
+                  <option value="Purva Bhadrapada">Purva Bhadrapada (#25 - Kumbha/Meena)</option>
+                  <option value="Uttara Bhadrapada">Uttara Bhadrapada (#26 - Meena)</option>
+                  <option value="Revati">Revati (#27 - Meena)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-hand-holding-heart"></i> Calculate Compatibility Score</button>
+          </div>
+        </form>
+
+        <!-- Matchmaking Score Output -->
+        <div class="match-result-container hidden" id="matchResult">
+          <div class="score-header">
+            <div class="score-circle">
+              <span class="score-val" id="totalGunaScore">29.5</span>
+              <span class="score-max">/ 36</span>
+            </div>
+            <div class="score-summary">
+              <h3 id="matchGradeTitle">Excellent Compatibility (Shubh Milan)</h3>
+              <p id="matchSummaryText">The Guna Milan score is 29.5 out of 36, indicating strong emotional, mental, and spiritual harmony between Aarav and Priya.</p>
+            </div>
+          </div>
+
+          <div class="koot-breakdown-grid" id="kootBreakdown">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily Horoscope Vibe / Planetary Insights -->
+  <section class="section horoscope-section" id="horoscope">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle"><i class="fa-solid fa-sparkles" style="color:var(--vedic-gold);"></i> Daily Cosmic Guidance</span>
+        <h2 class="section-title">Select Your Moon Sign (Rashi)</h2>
+        <p class="section-desc" id="horoDateSubHeader">Fresh Vedic horoscopes automatically renewed daily for all 12 Moon Signs.</p>
+        <div class="title-divider"><span>✦</span></div>
+      </div>
+
+      <div class="rashi-selector-grid" id="rashiSelectorGrid">
+        <!-- Rendered by JS for 12 Rashis -->
+      </div>
+
+      <div class="horoscope-result-card glass-card mt-4" id="horoscopeResultCard">
+        <div class="rashi-hero-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-bottom:16px; border-bottom:1px solid var(--card-border);">
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span class="rashi-big-symbol" id="horoSymbol" style="font-size:3rem; color:var(--vedic-gold);">♈</span>
+            <div>
+              <h3 id="horoRashiName" style="color:var(--cosmic-blue); margin:0; font-size:1.4rem;">Mesha (Aries) Daily Forecast</h3>
+              <p class="horo-date" id="horoCurrentDate" style="color:var(--text-muted); font-size:0.88rem; margin:4px 0 0 0;">
+                <i class="fa-regular fa-calendar-days" style="color:var(--primary-pink-dark);"></i> <span id="horoDateSpan">Today's Guidance</span>
+              </p>
+            </div>
+          </div>
+          <div>
+            <span class="badge-active" style="background:var(--cosmic-blue); color:var(--vedic-gold); padding:6px 14px; border-radius:20px; font-size:0.8rem; font-weight:700;">
+              <i class="fa-solid fa-rotate"></i> Auto-Renewed Daily
+            </span>
+          </div>
+        </div>
+
+        <!-- Overview Text -->
+        <div class="horo-overview mt-3" style="background:#FCFAFA; padding:16px 20px; border-radius:12px; border:1px solid var(--card-border);">
+          <h4 style="color:var(--cosmic-blue); font-size:0.95rem; margin-bottom:6px;"><i class="fa-solid fa-compass" style="color:var(--vedic-gold);"></i> Overall Daily Planetary Vibe</h4>
+          <p class="horo-text" id="horoDescription" style="font-size:0.92rem; line-height:1.6; color:var(--text-dark); margin:0;"></p>
+        </div>
+
+        <!-- Detailed 4-Pillar Grid -->
+        <div class="horo-pillars-grid" id="horoPillarsGrid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-top:20px;">
+          <!-- Rendered dynamically by JS: Career, Love, Health, Remedy -->
+        </div>
+
+        <!-- Cosmic Indicators -->
+        <div class="horo-indicators mt-4" id="horoIndicators" style="display:flex; flex-wrap:wrap; gap:12px; border-top:1px solid var(--card-border); padding-top:16px;">
+          <!-- Chips: Color, Number, Direction, Power Hours, Vibe -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Testimonials & Success Stories Section -->
+  <section class="section testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-subtitle"><i class="fa-solid fa-quote-left" style="color:var(--vedic-gold);"></i> Real Experiences & Growth</span>
+        <h2 class="section-title">Testimonials & Stories</h2>
+        <p class="section-desc">Read how Acharya Nimisha Bhardwaj Ji's scientific, non-fatalistic astrological guidance has empowered seekers from all walks of life.</p>
+        <div class="title-divider"><span>✦</span></div>
+      </div>
+
+      <div class="testimonials-grid">
+        <!-- Testimonial 1: Mr. Akshat Shubham (Asst. Professor) -->
+        <div class="testimonial-card">
+          <div class="person-photo-frame" style="width:130px; height:165px;">
+            <img src="images/akshat-shubham.jpeg" alt="Mr. Akshat Shubham" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-overlay" style="display:none;">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>Akshat Shubham<br><small>(akshat-shubham.jpeg)</small></span>
+            </div>
+          </div>
+          <div class="star-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="testimonial-text">"Acharya Nimisha Ji's D10 Dashamsha analysis gave me absolute clarity during my academic career crossroads. Her non-fatalistic remedies and guidance brought immense focus, peace of mind, and timely promotion. Truly transformative!"</p>
+          <div class="client-info">
+            <h4>Mr. Akshat Shubham</h4>
+            <p>Assistant Professor</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 2: Ms. Shubhangi Shree (Software Engineer) -->
+        <div class="testimonial-card">
+          <div class="person-photo-frame" style="width:130px; height:165px;">
+            <img src="images/shubhangi-shree.jpeg" alt="Ms. Shubhangi Shree" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-overlay" style="display:none;">
+              <i class="fa-solid fa-laptop-code"></i>
+              <span>Shubhangi Shree<br><small>(shubhangi-shree.jpeg)</small></span>
+            </div>
+          </div>
+          <div class="star-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="testimonial-text">"I was suffering from severe burnout and job switch anxieties. Acharya Ji's planetary transit (Gochar) breakdown pinpointed the exact month for a successful transition. Her remedies are simple, practical, and highly effective."</p>
+          <div class="client-info">
+            <h4>Ms. Shubhangi Shree</h4>
+            <p>Software Engineer</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 3: Mrs. Poorva Gupte (Homemaker / Housewife) -->
+        <div class="testimonial-card">
+          <div class="person-photo-frame" style="width:130px; height:165px;">
+            <img src="images/poorva-gupte.jpg" alt="Mrs. Poorva Gupte" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="photo-placeholder-overlay" style="display:none;">
+              <i class="fa-solid fa-house-chimney-heart"></i>
+              <span>Poorva Gupte<br><small>(poorva-gupte.jpg)</small></span>
+            </div>
+          </div>
+          <div class="star-rating">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <p class="testimonial-text">"Her Ashtakoot Guna Milan and marriage compatibility guidance brought deep understanding and warmth back into our family. She speaks with such empathy and clarity. I am profoundly grateful for her wisdom."</p>
+          <div class="client-info">
+            <h4>Mrs. Poorva Gupte</h4>
+            <p>Homemaker</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Intake & Booking Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card glass-card">
+      <button class="modal-close" id="modalCloseBtn">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-icon"><i class="fa-solid fa-calendar-check"></i></span>
+        <h3>Book Consultation with Acharya Nimisha</h3>
+        <p>Please provide required client intake details for prior horoscopic calculations.</p>
+      </div>
+
+      <form id="intakeForm" class="intake-form">
+        <div class="form-group">
+          <label for="intakePackage">Selected Package / Service</label>
+          <select id="intakePackage" required>
+            <option value="Comprehensive Birth Chart Reading (₹1,100 / 25 mins)">Package 1: Single Chart Reading (₹1,100 / 25 mins)</option>
+            <option value="Dual Chart Reading (₹2,100 / 45 mins)">Package 2: Dual Chart Reading (₹2,100 / 45 mins)</option>
+            <option value="Matchmaking & Compatibility (₹2,499 / 45 mins)">Package 3: Matchmaking & Compatibility (₹2,499 / 45 mins)</option>
+            <option value="Corporate / Custom Consultation">Corporate / Custom Family Consultation</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="intakeName">Full Name *</label>
+            <input type="text" id="intakeName" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <label for="intakeProfession">Profession / Occupation *</label>
+            <input type="text" id="intakeProfession" placeholder="e.g. Software Engineer, Doctor, Student" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="intakeDob">Date of Birth *</label>
+            <input type="date" id="intakeDob" required>
+          </div>
+          <div class="form-group">
+            <label for="intakeTob">Exact Time of Birth *</label>
+            <input type="time" id="intakeTob" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group pob-autocomplete-wrapper">
+            <label for="intakePobInput">Place of Birth (Type city for Lat/Long) *</label>
+            <input type="text" id="intakePobInput" placeholder="Type city (e.g. Mumbai, Janakpur, Dubai)" autocomplete="off" required>
+            <input type="hidden" id="intakeLat" value="28.6139">
+            <input type="hidden" id="intakeLon" value="77.2090">
+            <input type="hidden" id="intakeTz" value="5.5">
+            <div class="pob-dropdown hidden" id="intakePobDropdown"></div>
+            <div class="lat-lon-badge" id="intakeLatLonBadge">
+              <i class="fa-solid fa-compass"></i> Coordinates: Select city
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="intakeMode">Preferred Consultation Mode *</label>
+            <select id="intakeMode" required>
+              <option value="Voice Call (WhatsApp / Phone)">Voice Call (Phone / WhatsApp)</option>
+              <option value="Written PDF Report">Written Comprehensive PDF Report</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="intakeQuery">Primary Concerns / Specific Questions</label>
+          <textarea id="intakeQuery" rows="3" placeholder="Mention key focus areas (Career, Marriage timing, Health, Financial remedies, etc.)"></textarea>
+        </div>
+
+        <div class="modal-footer-btns">
+          <button type="submit" class="btn btn-whatsapp-direct full-width" id="submitWhatsapp" style="width:100%; justify-content:center; padding:12px 20px; font-size:1rem;"><i class="fa-brands fa-whatsapp"></i> Book Consultation via WhatsApp (+91 8602110010)</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo footer-logo">
+            <i class="fa-solid fa-sun-plant-wilt"></i>
+            <div>
+              <span class="brand-name">Nimisha Bhardwaj</span>
+              <span class="brand-title">Acharya in Sidhant Jyotish</span>
+            </div>
+          </div>
+          <p class="footer-tagline">"Ancient Jyotish, Modern Guidance"<br><em>तमसो मा ज्योतिर्गमय</em></p>
+          <p class="footer-bio">Empowering individuals with mathematical Vedic clarity, removing fear, and illuminating life's path with authentic 8th-generation wisdom.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Direct Contact & Booking</h4>
+          <ul class="footer-contact-list">
+            <li><i class="fa-solid fa-phone"></i> <strong>Phone / WhatsApp:</strong> +91 8602110010</li>
+            <li><i class="fa-solid fa-envelope"></i> <strong>Booking Email:</strong> n.astro3008@gmail.com</li>
+            <li><i class="fa-solid fa-building-columns"></i> <strong>Degree:</strong> Sidhant Jyotish Acharya (Central Sanskrit Univ.)</li>
+            <li><i class="fa-solid fa-user-graduate"></i> <strong>Academics:</strong> B.A. Economics, Psychology & English</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>PyHora App Features</h4>
+          <ul class="footer-links">
+            <li><a href="#pyhora-tools"><i class="fa-solid fa-chevron-right"></i> Instant Free Kundli Generator</a></li>
+            <li><a href="#pyhora-tools"><i class="fa-solid fa-chevron-right"></i> Vimshottari & Yogini Dasha</a></li>
+            <li><a href="#pyhora-tools"><i class="fa-solid fa-chevron-right"></i> Ashtakvarga Point Graph</a></li>
+            <li><a href="#matchmaking"><i class="fa-solid fa-chevron-right"></i> 36 Guna Milan Matchmaker</a></li>
+            <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Remedial Gemstones & Mantras</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Acharya Nimisha Bhardwaj. All Rights Reserved. Designed for Vedic Precision & Modern Illumination.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="city-database.js"></script>
+  <script src="astrology-engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
