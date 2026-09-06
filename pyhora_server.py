@@ -5,6 +5,8 @@ import urllib.parse
 import urllib.request
 import json
 import os
+import datetime
+import threading
 from pyhora_engine import calculate_kundli, calculate_guna_milan_full
 
 PORT = int(os.environ.get('PORT', 8080))
@@ -93,6 +95,64 @@ class PyHoraRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(json.dumps(results).encode('utf-8'))
             return
+        elif parsed.path == '/api/booked-slots':
+            query_params = urllib.parse.parse_qs(parsed.query)
+            date_str = query_params.get('date', [''])[0].strip()
+            
+            all_slots = [
+                "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",
+                "02:00 PM", "02:30 PM", "03:00 PM", "04:00 PM", "04:30 PM",
+                "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM"
+            ]
+
+            def get_3_parked(d_str):
+                if not d_str:
+                    return ["10:30 AM", "02:30 PM", "06:30 PM"]
+                seed = sum(ord(c) for c in d_str)
+                indices = []
+                for i in range(20):
+                    idx = (seed * (i + 3) + i * 7) % len(all_slots)
+                    if idx not in indices:
+                        indices.append(idx)
+                    if len(indices) == 3:
+                        break
+                return [all_slots[i] for i in indices]
+
+            user_booked = []
+            parked = get_3_parked(date_str)
+            
+            if os.path.exists('booked_slots.json'):
+                try:
+                    with open('booked_slots.json', 'r', encoding='utf-8') as f:
+                        slots_data = json.load(f)
+                        
+                        if date_str and date_str in slots_data.get('bookings', {}):
+                            entry = slots_data['bookings'][date_str]
+                            if isinstance(entry, dict):
+                                user_booked = entry.get('user_booked', [])
+                                parked = entry.get('parked', [])
+                            elif isinstance(entry, list):
+                                user_booked = entry
+                                parked = []
+                        else:
+                            parked = get_3_parked(date_str)
+                except Exception as e:
+                    print("Error reading booked_slots.json:", e)
+
+            # Combined unavailable list for backward compatibility
+            all_unavailable = list(set(user_booked + parked))
+
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "date": date_str,
+                "user_booked": user_booked,
+                "parked": parked,
+                "booked_slots": all_unavailable
+            }).encode('utf-8'))
+            return
         
         super().do_GET()
 
@@ -141,6 +201,142 @@ class PyHoraRequestHandler(http.server.SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(json.dumps(result).encode('utf-8'))
             except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': str(e)}).encode('utf-8'))
+            return
+        elif parsed.path == '/api/book-slot':
+            content_len = int(self.headers.get('Content-Length', 0))
+            post_body = self.rfile.read(content_len).decode('utf-8')
+            try:
+                data = json.loads(post_body)
+                date_str = data.get('date', '')
+                slot_str = data.get('slot', '')
+                
+                all_slots = [
+                    "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",
+                    "02:00 PM", "02:30 PM", "03:00 PM", "04:00 PM", "04:30 PM",
+                    "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM"
+                ]
+
+                def get_3_parked(d_str):
+                    if not d_str:
+                        return ["10:30 AM", "02:30 PM", "06:30 PM"]
+                    seed = sum(ord(c) for c in d_str)
+                    indices = []
+                    for i in range(20):
+                        idx = (seed * (i + 3) + i * 7) % len(all_slots)
+                        if idx not in indices:
+                            indices.append(idx)
+                        if len(indices) == 3:
+                            break
+                    return [all_slots[i] for i in indices]
+
+                slots_data = {"default_parked": ["10:30 AM", "02:30 PM", "06:30 PM"], "bookings": {}}
+                if os.path.exists('booked_slots.json'):
+                    try:
+                        with open('booked_slots.json', 'r', encoding='utf-8') as f:
+                            slots_data = json.load(f)
+                    except Exception:
+                        pass
+                
+                if 'bookings' not in slots_data:
+                    slots_data['bookings'] = {}
+                
+                if date_str not in slots_data['bookings']:
+                    parked = get_3_parked(date_str)
+                    slots_data['bookings'][date_str] = {"user_booked": [], "parked": parked}
+                
+                entry = slots_data['bookings'][date_str]
+                if isinstance(entry, list):
+                    slots_data['bookings'][date_str] = {"user_booked": list(entry), "parked": []}
+                    entry = slots_data['bookings'][date_str]
+                
+                # Genuine User Booking & Auto-Unpark mechanism:
+                if slot_str:
+                    if slot_str in entry.get('parked', []):
+                        # If user books a slot that was parked, move it to user_booked (remains grayed out as genuinely booked)
+                        entry['parked'].remove(slot_str)
+                        if slot_str not in entry.get('user_booked', []):
+                            entry['user_booked'].append(slot_str)
+                    else:
+                        # If user books an open slot, add to user_booked AND release 1 casually grayed-out parked slot!
+                        if slot_str not in entry.get('user_booked', []):
+                            entry['user_booked'].append(slot_str)
+                        if entry.get('parked') and len(entry['parked']) > 0:
+                            entry['parked'].pop(0) # 1 casually grayed out slot opens up!
+                
+                with open('booked_slots.json', 'w', encoding='utf-8') as f:
+                    json.dump(slots_data, f, indent=2)
+
+                # 1) Log Request to CSV Spreadsheet (Google Sheets Compatible format)
+                try:
+                    import csv
+                    csv_path = 'booking_requests.csv'
+                    file_exists = os.path.exists(csv_path)
+                    with open(csv_path, 'a', encoding='utf-8', newline='') as csv_file:
+                        writer = csv.writer(csv_file)
+                        if not file_exists:
+                            writer.writerow(["Timestamp", "Date", "Slot", "Service", "Client Name", "Phone", "DOB", "TOB", "POB", "Query"])
+                        now_ts = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                        writer.writerow([
+                            now_ts,
+                            date_str,
+                            slot_str,
+                            data.get('service', data.get('option', 'Time-Based Consultation')),
+                            data.get('name', 'N/A'),
+                            data.get('phone', 'N/A'),
+                            data.get('dob', 'N/A'),
+                            data.get('tob', 'N/A'),
+                            data.get('pob', 'N/A'),
+                            data.get('query', data.get('topic', 'N/A'))
+                        ])
+                except Exception as csv_err:
+                    print("Error logging to CSV spreadsheet:", csv_err)
+
+                # 2) Email Notification Log (Destination: n.astro3008@gmail.com)
+                print(f"[EMAIL NOTIFICATION TRIGGERED to n.astro3008@gmail.com] Slot Request: {slot_str} on {date_str} for {data.get('name')}")
+
+                # 3) Async Push to Google Spreadsheet Webhook
+                google_webhook_url = os.environ.get(
+                    'GOOGLE_SHEET_WEBHOOK_URL',
+                    'https://script.google.com/macros/s/AKfycbxQxcY_AW76uojeb2bUzO1-IMx9cAl4tGOT4faAkEHiNSFJq_-LyAF_MzCipUuf-zv9/exec'
+                )
+                if google_webhook_url:
+                    def push_to_google_sheet():
+                        try:
+                            req_data = json.dumps({
+                                "date": date_str,
+                                "slot": slot_str,
+                                "service": data.get('service', data.get('option', 'Time-Based Consultation')),
+                                "name": data.get('name', 'N/A'),
+                                "phone": data.get('phone', 'N/A'),
+                                "dob": data.get('dob', 'N/A'),
+                                "tob": data.get('tob', 'N/A'),
+                                "pob": data.get('pob', 'N/A'),
+                                "query": data.get('query', data.get('topic', 'N/A'))
+                            }).encode('utf-8')
+                            
+                            req = urllib.request.Request(
+                                google_webhook_url,
+                                data=req_data,
+                                headers={'Content-Type': 'application/json'}
+                            )
+                            with urllib.request.urlopen(req, timeout=10) as resp:
+                                print(f"[GOOGLE SHEET WEBHOOK] Successfully pushed payload to Google Spreadsheet!")
+                        except Exception as g_err:
+                            print("[GOOGLE SHEET WEBHOOK] Notice:", g_err)
+
+                    threading.Thread(target=push_to_google_sheet, daemon=True).start()
+
+                self.send_response(200)
+                self.send_header('Content-type', 'application/json')
+                self.send_header('Access-Control-Allow-Origin', '*')
+                self.end_headers()
+                self.wfile.write(json.dumps({"success": True, "message": "Slot booked successfully!", "date": date_str, "slot": slot_str}).encode('utf-8'))
+            except Exception as e:
+                print("Error processing /api/book-slot:", e)
                 self.send_response(500)
                 self.send_header('Content-type', 'application/json')
                 self.end_headers()

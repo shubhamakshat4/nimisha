@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full Birth Chart Reading | Acharya Nimisha Bharadwaj</title>
+  <meta name="description" content="Comprehensive 360-degree natal horoscope reading with Acharya Nimisha Bharadwaj. Deep evaluation of D1, D9, D10 charts, Dasha timelines, and Vedic remedies.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css?v=4.0">
+  <style>
+    /* Custom Styling for Full Birth Chart Reading Page */
+    .tb-hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 27, 75, 0.88) 100%), url('images/full-chart-hero.jpg') center/cover no-repeat;
+      padding: 100px 0 80px;
+      color: #fff;
+      overflow: hidden;
+      border-bottom: 2px solid var(--vedic-gold);
+    }
+    
+    .tb-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15), transparent 60%);
+      pointer-events: none;
+    }
+
+    .tb-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(212, 175, 55, 0.18);
+      border: 1px solid var(--vedic-gold);
+      border-radius: 50px;
+      color: #FDF6E3;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .tb-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #FDF6E3;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 16px;
+    }
+
+    .tb-hero-desc {
+      font-size: 1.15rem;
+      color: #E2E8F0;
+      max-width: 680px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .tb-hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .tb-hero-chip {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(6px);
+      color: #fff;
+    }
+
+    /* Option Cards */
+    .tb-cards-grid {
+      display: flex;
+      justify-content: center;
+      margin-top: -40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .tb-tier-card {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      border: 3px solid #D4AF37;
+      border-radius: 20px;
+      padding: 40px 32px;
+      box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+      max-width: 640px;
+      width: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tb-tier-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(212, 175, 55, 0.3);
+    }
+
+    .tb-tier-header {
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .tb-tier-badge {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #D4AF37;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tb-tier-price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #1E1B4B;
+      margin: 12px 0 6px;
+    }
+
+    .tb-tier-subtitle {
+      color: #64748B;
+      font-size: 1rem;
+    }
+
+    .tb-tier-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 28px;
+    }
+
+    .tb-tier-list li {
+      padding: 10px 0;
+      color: #334155;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px dashed #F1F5F9;
+    }
+
+    .tb-tier-list li i {
+      color: #D4AF37;
+      font-size: 1.1rem;
+    }
+
+    /* Form Container */
+    .tb-booking-container {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+      border: 1px solid #E2E8F0;
+      margin-top: 50px;
+    }
+
+    .tb-step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: #1E1B4B;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tb-step-title i {
+      color: #D4AF37;
+    }
+
+    /* Duration Radio Cards */
+    .duration-options-grid {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+
+    .duration-radio-card {
+      border: 2px solid #D4AF37;
+      border-radius: 14px;
+      padding: 20px 30px;
+      cursor: pointer;
+      background: #FFFDF5;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+      text-align: center;
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .duration-radio-card input {
+      display: none;
+    }
+
+    /* Slot Picker Grid */
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .slot-btn {
+      padding: 12px 8px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: #1E293B;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .slot-btn:hover:not(.disabled) {
+      border-color: #D4AF37;
+      background: #FFFDF5;
+      color: #8B0032;
+    }
+
+    .slot-btn.selected {
+      border-color: #D4AF37 !important;
+      background: #1E1B4B !important;
+      color: #FDF6E3 !important;
+      box-shadow: 0 4px 12px rgba(30, 27, 75, 0.2);
+    }
+
+    .slot-btn.disabled {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+      color: #94A3B8;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .slot-notice-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.88rem;
+      color: #64748B;
+    }
+
+    .slot-notice-badge.active {
+      color: #8B0032;
+      font-weight: 600;
+    }
+
+    .booking-success-card {
+      background: #F0FDF4;
+      border: 2px solid #22C55E;
+      border-radius: 16px;
+      padding: 40px 20px;
+    }
+
+    .booking-success-card .success-icon {
+      font-size: 3.5rem;
+      color: #22C55E;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo-link">
+        <div class="brand-logo">
+          <img src="images/logo.jpg" alt="Acharya Nimisha Bhardwaj Logo" class="brand-logo-img">
+          <div class="brand-text">
+            <span class="brand-name">Acharya Nimisha Bhardwaj</span>
+            <span class="brand-tagline">Sidhant & Hora Jyotish Master</span>
+          </div>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#pricing"><i class="fa-solid fa-tags"></i> Pricing & Package</a>
+        <a href="#features"><i class="fa-solid fa-list-check"></i> What You Receive</a>
+        <a href="#chart-booking-section"><i class="fa-solid fa-calendar-check"></i> Book Slot</a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#chart-booking-section" class="btn btn-gold btn-header"><i class="fa-solid fa-bolt"></i> Instant Booking</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="tb-hero">
+      <div class="container">
+        <div class="tb-hero-badge">
+          <i class="fa-solid fa-dharmachakra"></i> Complete Natal Horoscope Blueprint
+        </div>
+        <h1 class="tb-hero-title">Full Birth Chart Reading</h1>
+        <p class="tb-hero-desc">
+          Experience a comprehensive 360-degree astrological evaluation of your complete natal horoscope. Acharya Nimisha Bharadwaj performs in-depth analysis across your D1 Lagna, D9 Navamsha, D10 Dashamsha divisional charts, Vimshottari & Yogini Dasha timelines, Ashtakvarga transits, and personalized remedial protocols.
+        </p>
+        
+        <div class="tb-hero-features">
+          <span class="tb-hero-chip"><i class="fa-solid fa-check"></i> D1, D9 (Navamsha) & D10 (Dashamsha) Charts</span>
+          <span class="tb-hero-chip"><i class="fa-solid fa-check"></i> Vimshottari & Yogini Dasha Timelines</span>
+          <span class="tb-hero-chip"><i class="fa-solid fa-check"></i> Ashtakvarga & Transit Planetary Evaluation</span>
+          <span class="tb-hero-chip"><i class="fa-solid fa-check"></i> Customized Vedic Remedial Blueprint</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#chart-booking-section" class="btn btn-gold btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Your Slot Now</a>
+          <a href="#pricing" class="btn btn-secondary btn-lg" style="margin-left: 12px; color:#fff; border-color:rgba(255,255,255,0.4);"><i class="fa-solid fa-eye"></i> View Pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Pricing Cards Section -->
+      <section id="pricing" class="section">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-tag"></i> PRICING PACKAGE</span>
+          <h2 class="section-title">Comprehensive Natal Reading Package</h2>
+          <p class="section-desc">Complete 360-degree horoscope evaluation with Acharya Nimisha Bharadwaj.</p>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+
+        <div class="tb-cards-grid">
+          
+          <!-- Package Card -->
+          <div class="tb-tier-card">
+            <div class="tb-tier-header">
+              <span class="tb-tier-badge"><i class="fa-solid fa-crown"></i> Complete Lifetime Horoscope</span>
+              <div class="tb-tier-price">₹2,500</div>
+              <div class="tb-tier-subtitle">Full Birth Chart Reading Session</div>
+            </div>
+            <ul class="tb-tier-list">
+              <li><i class="fa-solid fa-check-circle"></i> 360° D1 Lagna, D9 Navamsha & D10 Dashamsha Chart Evaluation</li>
+              <li><i class="fa-solid fa-check-circle"></i> In-depth Vimshottari & Yogini Dasha Timeline Analysis</li>
+              <li><i class="fa-solid fa-check-circle"></i> Ashtakvarga point graph & major transit predictions (Saturn, Jupiter, Rahu-Ketu)</li>
+              <li><i class="fa-solid fa-check-circle"></i> Lifetime career, marriage, financial & health trajectory guidance</li>
+              <li><i class="fa-solid fa-check-circle"></i> Customized Gemstone, Mantra, and Stotra remedial protocol</li>
+              <li><i class="fa-solid fa-check-circle"></i> Live 1-on-1 virtual slot booking with Acharya Nimisha</li>
+            </ul>
+            <a href="#chart-booking-section" class="btn btn-gold full-width btn-lg text-center">
+              Select Full Reading & Book Slot <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Features / What You Receive -->
+      <section id="features" class="section" style="background:var(--bg-cream-alt); padding:50px 20px; border-radius:20px; margin-top:40px;">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-shield-halved"></i> WHAT YOU RECEIVE</span>
+          <h2 class="section-title">Complete Astrological Deliverables</h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+
+        <div class="features-grid-5 mt-4" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-compass"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">360° Natal Blueprint</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Thorough evaluation of all 12 houses and planetary lordships in your D1 chart.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-diagram-project"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">Divisional Charts</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Deep analysis of D9 (Navamsha) and D10 (Dashamsha) for career & destiny.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-hourglass-start"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">Dasha Timeline</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Mapping past, current, and upcoming Dasha periods with precise timing.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-gem"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">Lifetime Remedies</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Non-superstitious gemstones, Mantras, and Stotras to strengthen benefic planets.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-user-shield"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">100% Confidential</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Private 1-on-1 virtual counseling session with Acharya Nimisha Bharadwaj.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking Section -->
+      <section id="chart-booking-section" class="section" style="scroll-margin-top: 100px;">
+        <div class="tb-booking-container">
+          <div class="section-header text-center" style="margin-bottom:30px;">
+            <span class="section-subtitle"><i class="fa-solid fa-calendar-plus"></i> LIVE SLOT BOOKING</span>
+            <h2 class="section-title">Book Full Birth Chart Reading</h2>
+            <p class="section-desc">Select your date and time slot, enter your birth details, and send your request.</p>
+          </div>
+
+          <!-- Booking Form -->
+          <form id="chartBookingForm">
+            
+            <!-- Step 1: Package Selection -->
+            <div class="form-block">
+              <label class="tb-step-title"><i class="fa-solid fa-list-ol"></i> Step 1: Selected Consultation Package</label>
+              <div class="duration-options-grid">
+                
+                <label class="duration-radio-card active">
+                  <input type="radio" name="fcPlan" value="Full Birth Chart Reading" data-fee="2500" checked>
+                  <div class="duration-title" style="font-weight:700; color:var(--cosmic-blue); font-size:1.15rem;">Full Birth Chart Reading</div>
+                  <div class="duration-price" style="color:var(--primary-pink-dark); font-weight:800; font-size:1.3rem; margin:6px 0;">₹2,500</div>
+                  <small style="color:var(--text-muted);">Complete 360° Natal Blueprint & Remedies</small>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Step 2: Date & Slot Picker -->
+            <div class="form-block">
+              <label class="tb-step-title"><i class="fa-solid fa-clock"></i> Step 2: Choose Preferred Date & Time Slot</label>
+              
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="fcBookingDate">Select Date *</label>
+                  <input type="date" id="fcBookingDate" required>
+                </div>
+                <div class="form-group">
+                  <label>Selected Slot:</label>
+                  <div id="selectedSlotBadge" class="slot-notice-badge">Please click on any open slot below</div>
+                </div>
+              </div>
+
+              <div class="slots-container mt-3">
+                <label style="font-size:0.9rem; font-weight:600; color:var(--cosmic-blue);">Available Time Slots (IST)</label>
+                <div id="fcSlotsGrid" class="slots-grid">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Client Birth Details -->
+            <div class="form-block mt-4">
+              <label class="tb-step-title"><i class="fa-solid fa-user-pen"></i> Step 3: Enter Your Birth Details & Specific Topics</label>
+              
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="fcName">Full Name *</label>
+                  <input type="text" id="fcName" placeholder="e.g. Aarav Sharma" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="fcPhone">Phone / WhatsApp Number *</label>
+                  <input type="tel" id="fcPhone" placeholder="+91 9876543210" required>
+                </div>
+              </div>
+
+              <div class="form-grid-3 mt-3">
+                <div class="form-group">
+                  <label for="fcDob">Date of Birth *</label>
+                  <input type="date" id="fcDob" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="fcTob">Time of Birth *</label>
+                  <input type="time" id="fcTob" required>
+                </div>
+
+                <div class="form-group pob-autocomplete-wrapper">
+                  <label for="fcPob">Place of Birth *</label>
+                  <input type="text" id="fcPob" placeholder="Type city (e.g. New Delhi, Janakpur, London)" autocomplete="off" required>
+                  <div class="pob-dropdown hidden" id="fcPobDropdown"></div>
+                </div>
+              </div>
+
+              <div class="form-group mt-3">
+                <label for="fcTopic">Primary Areas of Focus / Questions (Optional)</label>
+                <textarea id="fcTopic" rows="4" placeholder="Optionally mention specific areas of focus (e.g. Career growth, Business expansion, Marriage timing, Health, Financial prosperity)..."></textarea>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions mt-4 text-center">
+              <button type="submit" id="fcSubmitBtn" class="btn btn-gold btn-lg full-width">
+                <i class="fa-solid fa-paper-plane"></i> Send Request
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Confirmation Success Box (Hidden initially) -->
+          <div id="fcSuccessBox" class="booking-success-card hidden text-center">
+            <div class="success-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <h2>Slot Request Sent!</h2>
+            <p id="fcSuccessMessage" class="success-desc"></p>
+            
+            <div class="success-actions mt-4">
+              <a id="fcWhatsappBtn" href="#" target="_blank" class="btn btn-whatsapp btn-lg">
+                <i class="fa-brands fa-whatsapp"></i> Send Details on WhatsApp to Nimisha
+              </a>
+              <button onclick="location.reload()" class="btn btn-secondary mt-2">Send Another Request</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo">
+            <img src="images/logo.jpg" alt="Acharya Nimisha Bhardwaj Logo" class="brand-logo-img">
+            <span class="brand-name">Nimisha Bharadwaj</span>
+          </div>
+          <p class="footer-desc">
+            Sidhant Jyotish Acharya (Central Sanskrit University). Eliminating fears through ancient mathematical precision and empathetic guidance.
+          </p>
+          <div class="footer-socials mt-3">
+            <a href="https://www.instagram.com/astrologyunfolded?igsi=YTQ5MHhjZHB0MzA=&utm_source=ig_contact_invite" target="_blank" rel="noopener" class="footer-social-btn instagram"><i class="fa-brands fa-instagram"></i> @astrologyunfolded</a>
+            <a href="https://www.facebook.com/share/14nAa8idmRi/" target="_blank" rel="noopener" class="footer-social-btn facebook"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Direct Contact</h4>
+          <ul class="footer-contact-list">
+            <li><i class="fa-solid fa-phone"></i> <strong>Phone/WhatsApp:</strong> +91 8602110010</li>
+            <li><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> n.astro3008@gmail.com</li>
+            <li><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> India (Global Virtual Counseling)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p>&copy; 2026 Acharya Nimisha Bharadwaj. All Rights Reserved. | Sidhant Jyotish Counseling</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="city-database.js"></script>
+  <script src="app.js"></script>
+  <!-- Script for Full Birth Chart Reading Booking Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Place of Birth City Autocomplete Dropdown
+      if (typeof setupAutocomplete === 'function') {
+        setupAutocomplete('fcPob', 'fcPobDropdown');
+      }
+
+      const dateInput = document.getElementById('fcBookingDate');
+      const slotsGrid = document.getElementById('fcSlotsGrid');
+      const badge = document.getElementById('selectedSlotBadge');
+      const bookingForm = document.getElementById('chartBookingForm');
+      const successBox = document.getElementById('fcSuccessBox');
+      const successMsg = document.getElementById('fcSuccessMessage');
+      const whatsappBtn = document.getElementById('fcWhatsappBtn');
+
+      let selectedSlotTime = '';
+      let bookedSlots = {};
+
+      // Set min date to today
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.min = today;
+      dateInput.value = today;
+
+      // Default slot templates
+      const defaultTimeSlots = [
+        "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",
+        "02:00 PM", "02:30 PM", "03:00 PM", "04:00 PM", "04:30 PM",
+        "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM"
+      ];
+
+      // Fetch booked slots from API for selected date
+      async function fetchBookedSlots() {
+        const date = dateInput.value;
+        let unavailableList = [];
+        try {
+          const res = await fetch('/api/booked-slots?date=' + date);
+          if (res.ok) {
+            const data = await res.json();
+            unavailableList = data.booked_slots || [];
+          }
+        } catch (e) {
+          console.log('Using fallback slot logic');
+        }
+
+        slotsGrid.innerHTML = '';
+        selectedSlotTime = '';
+        badge.className = 'slot-notice-badge';
+        badge.innerHTML = 'Please click on any open slot below';
+
+        defaultTimeSlots.forEach(slot => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'slot-btn';
+          btn.textContent = slot;
+
+          if (unavailableList.includes(slot)) {
+            btn.classList.add('disabled');
+            btn.disabled = true;
+          } else {
+            btn.addEventListener('click', () => {
+              document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+              btn.classList.add('selected');
+              selectedSlotTime = slot;
+              badge.className = 'slot-notice-badge active';
+              badge.innerHTML = `<i class="fa-solid fa-check-circle"></i> Selected Slot: <strong>${slot}</strong> on <strong>${date}</strong>`;
+            });
+          }
+          slotsGrid.appendChild(btn);
+        });
+      }
+
+      dateInput.addEventListener('change', fetchBookedSlots);
+
+      // Form submission
+      bookingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (!selectedSlotTime) {
+          alert('Please select an available time slot before sending your request.');
+          return;
+        }
+
+        const date = dateInput.value;
+        const name = document.getElementById('fcName').value.trim();
+        const phone = document.getElementById('fcPhone').value.trim();
+        const dob = document.getElementById('fcDob').value;
+        const tob = document.getElementById('fcTob').value;
+        const pob = document.getElementById('fcPob').value.trim();
+        const topic = document.getElementById('fcTopic').value.trim();
+
+        // 1) Save to Spreadsheet CSV, Google Sheet Webhook & Server JSON
+        try {
+          await fetch('/api/book-slot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              date,
+              slot: selectedSlotTime,
+              service: 'Full Birth Chart Reading (₹2,500)',
+              name,
+              phone,
+              dob,
+              tob,
+              pob,
+              query: topic || 'Full Birth Chart Reading'
+            })
+          });
+        } catch (e) {
+          console.log('Booked locally');
+        }
+
+        // 2) Trigger WhatsApp automatically (MANDATORY & MUST)
+        const waMessage = 
+          `Namaste Acharya Nimisha Ji,\n\nI am requesting a Full Birth Chart Reading Booking:\n\n` +
+          `• Package: Full Birth Chart Reading (₹2,500)\n` +
+          `• Requested Date: ${date}\n` +
+          `• Requested Slot: ${selectedSlotTime}\n\n` +
+          `Client Details:\n` +
+          `- Name: ${name}\n` +
+          `- Phone: ${phone}\n` +
+          `- DOB: ${dob} | TOB: ${tob}\n` +
+          `- POB: ${pob}\n` +
+          `- Focus Areas: ${topic || 'Complete Natal Blueprint & Remedies'}\n\n` +
+          `Please review and confirm my slot request!`;
+
+        const waUrl = `https://wa.me/918602110010?text=${encodeURIComponent(waMessage)}`;
+        
+        // Mandatorily open WhatsApp in new tab
+        window.open(waUrl, '_blank');
+        whatsappBtn.href = waUrl;
+
+        // Show Success Box
+        bookingForm.classList.add('hidden');
+        successBox.classList.remove('hidden');
+        
+        successMsg.innerHTML = `If you have submitted your request on WhatsApp, please wait for our team to revert back to you.<br><br>If you are yet to submit the request, please click the button below to submit your request.`;
+      });
+
+      fetchBookedSlots();
+    });
+  </script>
+</body>
+</html>

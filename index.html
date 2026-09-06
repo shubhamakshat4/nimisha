@@ -11,7 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Outfit:wght@300;400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4.0">
+  <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+  <meta property="og:image" content="images/logo.jpg">
 </head>
 <body>
 
@@ -21,20 +23,20 @@
   <!-- Announcement Bar -->
   <div class="top-bar">
     <span><i class="fa-solid fa-om"></i> तमसो मा ज्योतिर्गमय — From ignorance to inner light</span>
-    <span class="top-contact"><i class="fa-solid fa-phone"></i> +91 8602110010 &nbsp;|&nbsp; <i class="fa-solid fa-envelope"></i> n.astro3008@gmail.com</span>
+    <span class="top-contact">
+      <i class="fa-solid fa-phone"></i> +91 8602110010 &nbsp;|&nbsp; 
+      <i class="fa-solid fa-envelope"></i> n.astro3008@gmail.com &nbsp;|&nbsp;
+      <a href="https://www.instagram.com/astrologyunfolded?igsi=YTQ5MHhjZHB0MzA=&utm_source=ig_contact_invite" target="_blank" rel="noopener" class="top-social-link" title="Instagram (@astrologyunfolded)"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/14nAa8idmRi/" target="_blank" rel="noopener" class="top-social-link" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </span>
   </div>
 
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="#" class="brand-logo">
-        <div class="logo-symbol">
-          <i class="fa-solid fa-sun-plant-wilt"></i>
-        </div>
-        <div class="brand-text">
-          <span class="brand-name">Nimisha Bhardwaj</span>
-          <span class="brand-title">Acharya in Sidhant Jyotish</span>
-        </div>
+        <img src="images/logo.jpg" alt="Nimisha Bharadwaj Logo" class="brand-logo-img">
+        <span class="brand-name">Nimisha Bharadwaj</span>
       </a>
       
       <ul class="nav-menu" id="navMenu">
@@ -79,8 +81,8 @@
       <!-- Right Column: Interactive Sun Core with Sacred Guru Paduka & 12 Rashi Zodiac Wheel -->
       <div class="hero-visual">
         <div class="celestial-system">
-          <div class="sun-core" style="overflow:hidden; border:3px solid var(--vedic-gold); box-shadow:0 0 30px var(--vedic-gold);">
-            <img src="images/GuruPaduka.jpg" alt="Guru Paduka" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+          <div class="sun-core" style="overflow:hidden; border:3px solid var(--vedic-gold); box-shadow:0 0 35px rgba(212, 160, 23, 0.6);">
+            <img src="images/logo.jpg" alt="Acharya Nimisha Bhardwaj Sacred Emblem" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
           </div>
           <div class="lotus-svg-container">
             <svg viewBox="0 0 100 100" class="lotus-svg">
@@ -138,10 +140,16 @@
           <p style="font-size:0.96rem; line-height:1.65; color:var(--text-dark); margin-bottom:16px;">
             Equipped with a prestigious <strong>Acharya Degree in Sidhant Jyotish</strong> from Central Sanskrit University alongside formal higher education degrees in <strong>Economics, Psychology, and English</strong>. She is dedicated to eliminating fears and superstitions around astrology, synthesizing deep astronomical precision with empathetic, non-fatalistic counseling.
           </p>
-          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
             <span class="cred-chip" style="font-size:0.8rem; background:var(--bg-cream-alt);"><i class="fa-solid fa-graduation-cap"></i> Sidhant Jyotish Acharya</span>
             <span class="cred-chip" style="font-size:0.8rem; background:var(--bg-cream-alt);"><i class="fa-solid fa-book-open"></i> B.A. Economics, Psychology & English</span>
             <span class="cred-chip" style="font-size:0.8rem; background:var(--bg-cream-alt);"><i class="fa-solid fa-clock-rotate-left"></i> 7+ Years Active Counseling</span>
+          </div>
+
+          <div class="profile-social-row" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <span style="font-size:0.85rem; font-weight:700; color:var(--cosmic-blue);"><i class="fa-solid fa-share-nodes" style="color:var(--vedic-gold);"></i> Follow & Connect:</span>
+            <a href="https://www.instagram.com/astrologyunfolded?igsi=YTQ5MHhjZHB0MzA=&utm_source=ig_contact_invite" target="_blank" rel="noopener" class="btn-social btn-instagram"><i class="fa-brands fa-instagram"></i> Instagram (@astrologyunfolded)</a>
+            <a href="https://www.facebook.com/share/14nAa8idmRi/" target="_blank" rel="noopener" class="btn-social btn-facebook"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
           </div>
         </div>
       </div>
@@ -207,65 +215,151 @@
     </div>
   </section>
 
-  <!-- Consultation Services & Packages Section -->
+  <!-- Consultation Guidance Options Section (Minimalist Landing Page View) -->
   <section class="section services-section" id="services">
     <div class="container">
       <div class="section-header text-center">
-        <span class="section-subtitle">Tailored Consultation Offerings</span>
-        <h2 class="section-title">Detailed Service Packages & Pricing</h2>
-        <p class="section-desc">Personalized, in-depth astrological guidance via Phone / WhatsApp voice calls or written comprehensive PDF reports.</p>
+        <span class="section-subtitle"><i class="fa-solid fa-om" style="color:var(--vedic-gold);"></i> PERSONAL GUIDANCE</span>
+        <h2 class="section-title">Consultation Options</h2>
+        <p class="section-desc">Select a consultation option below to choose your plan, fee, and available time slot.</p>
         <div class="title-divider"><span>✦</span></div>
       </div>
 
-      <div class="pricing-grid">
+      <div class="boxed-options-grid">
         
-        <!-- Package 1 -->
-        <div class="pricing-card glass-card">
-          <div class="card-badge">Single Kundli</div>
-          <h3 class="package-name">Comprehensive Birth Chart Reading</h3>
-          <div class="package-price">₹1,100 <span class="price-duration">/ 25 Mins</span></div>
-          <p class="package-desc">Single Kundli in-depth analysis focusing on personal career, finance, health, and remedies.</p>
-          <ul class="package-features">
-            <li><i class="fa-solid fa-check"></i> 1 Birth Chart (D1, D9, D10) Deep Dive</li>
-            <li><i class="fa-solid fa-check"></i> Current Mahadasha & Transit Analysis</li>
-            <li><i class="fa-solid fa-check"></i> Authentic Vedic Gemstone & Mantra Remedies</li>
-            <li><i class="fa-solid fa-check"></i> Mode: Voice Call or PDF Report</li>
-          </ul>
-          <button class="btn btn-primary full-width select-package-btn" data-pkg="Comprehensive Birth Chart Reading (₹1,100 / 25 mins)">Book Package 1</button>
+        <!-- Option 1: Time-Based -->
+        <div class="boxed-option-card">
+          <div class="boxed-card-top">
+            <span class="boxed-option-number">01</span>
+            <div class="option-icon-circle"><i class="fa-solid fa-hourglass-half"></i></div>
+          </div>
+          <h3 class="boxed-option-title">Time-Based Consultation</h3>
+          <span class="boxed-option-tag"><i class="fa-solid fa-stopwatch"></i> 5 Mins &nbsp;•&nbsp; 10 Mins</span>
+          <p class="boxed-option-desc">Quick & direct horoscopic guidance for urgent single-query topics.</p>
+          <div class="card-btn-group" style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+            <a href="time-based-consultation.html#time-booking-section" class="btn btn-gold btn-sm" style="font-size:0.85rem; padding:8px 12px; justify-content:center;">
+              <i class="fa-solid fa-bolt"></i> Instant Booking
+            </a>
+            <a href="time-based-consultation.html" class="btn btn-card-see-details" style="margin-top:0;">
+              See Details <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <!-- Package 2 Featured -->
-        <div class="pricing-card glass-card featured-pkg">
-          <div class="featured-ribbon">Most Popular</div>
-          <div class="card-badge">Dual Kundli</div>
-          <h3 class="package-name">Dual Chart / Extended Guidance</h3>
-          <div class="package-price">₹2,100 <span class="price-duration">/ 45 Mins</span></div>
-          <p class="package-desc">Detailed evaluation of 2 Birth Charts for personal, partner, or parent-child guidance.</p>
-          <ul class="package-features">
-            <li><i class="fa-solid fa-check"></i> 2 Birth Charts Detailed Comparison</li>
-            <li><i class="fa-solid fa-check"></i> Career, Business & Financial Projections</li>
-            <li><i class="fa-solid fa-check"></i> Annual Horoscope / Varshaphal Insights</li>
-            <li><i class="fa-solid fa-check"></i> Dedicated Q&A Time During Call</li>
-          </ul>
-          <button class="btn btn-gold full-width select-package-btn" data-pkg="Dual Chart Reading (₹2,100 / 45 mins)">Book Package 2</button>
+        <!-- Option 2: Question-Based -->
+        <div class="boxed-option-card">
+          <div class="boxed-card-top">
+            <span class="boxed-option-number">02</span>
+            <div class="option-icon-circle"><i class="fa-solid fa-clipboard-question"></i></div>
+          </div>
+          <h3 class="boxed-option-title">Question-Based Consultation</h3>
+          <span class="boxed-option-tag"><i class="fa-solid fa-list-check"></i> 3 Questions (₹500) &nbsp;•&nbsp; 5 Questions (₹1,000)</span>
+          <p class="boxed-option-desc">Targeted answers & solutions to your pre-shared specific queries.</p>
+          <div class="card-btn-group" style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+            <a href="question-based-consultation.html#question-booking-section" class="btn btn-gold btn-sm" style="font-size:0.85rem; padding:8px 12px; justify-content:center;">
+              <i class="fa-solid fa-bolt"></i> Instant Booking
+            </a>
+            <a href="question-based-consultation.html" class="btn btn-card-see-details" style="margin-top:0;">
+              See Details <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
-        <!-- Package 3 -->
-        <div class="pricing-card glass-card">
-          <div class="card-badge">Matchmaking</div>
-          <h3 class="package-name">Love, Marriage & Matchmaking</h3>
-          <div class="package-price">₹2,499 <span class="price-duration">/ 45 Mins</span></div>
-          <p class="package-desc">Complete Ashtakoot Guna Milan, Manglik Dosha check, and marital longevity evaluation.</p>
-          <ul class="package-features">
-            <li><i class="fa-solid fa-check"></i> 36 Guna Milan & Nadi Dosha Analysis</li>
-            <li><i class="fa-solid fa-check"></i> Relationship Longevity & Temperament</li>
-            <li><i class="fa-solid fa-check"></i> Neutralization Remedies for Doshas</li>
-            <li><i class="fa-solid fa-check"></i> Written Compatibility Report Included</li>
-          </ul>
-          <button class="btn btn-primary full-width select-package-btn" data-pkg="Matchmaking & Compatibility (₹2,499 / 45 mins)">Book Package 3</button>
+        <!-- Option 3: Full Reading -->
+        <div class="boxed-option-card">
+          <div class="boxed-card-top">
+            <span class="boxed-option-number">03</span>
+            <div class="option-icon-circle"><i class="fa-solid fa-dharmachakra"></i></div>
+          </div>
+          <h3 class="boxed-option-title">Full Birth Chart Reading</h3>
+          <span class="boxed-option-tag"><i class="fa-solid fa-book-open"></i> Complete Natal Blueprint (₹2,500)</span>
+          <p class="boxed-option-desc">Comprehensive 360-degree D1, D9, D10 chart, Dasha & remedy analysis.</p>
+          <div class="card-btn-group" style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+            <a href="full-birth-chart-reading.html#chart-booking-section" class="btn btn-gold btn-sm" style="font-size:0.85rem; padding:8px 12px; justify-content:center;">
+              <i class="fa-solid fa-bolt"></i> Instant Booking
+            </a>
+            <a href="full-birth-chart-reading.html" class="btn btn-card-see-details" style="margin-top:0;">
+              See Details <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Option 4: Special Services -->
+        <div class="boxed-option-card">
+          <div class="boxed-card-top">
+            <span class="boxed-option-number">04</span>
+            <div class="option-icon-circle"><i class="fa-solid fa-ring"></i></div>
+          </div>
+          <h3 class="boxed-option-title">Special Horoscopic Services</h3>
+          <span class="boxed-option-tag"><i class="fa-solid fa-heart"></i> Matchmaking &nbsp;•&nbsp; Child Horoscope &nbsp;•&nbsp; Muhurtam</span>
+          <p class="boxed-option-desc">36 Guna Milan, Child Aptitude Horoscope & Auspicious Muhurtam selection.</p>
+          <div class="card-btn-group" style="display:flex; flex-direction:column; gap:8px; margin-top:14px;">
+            <a href="special-horoscopic-services.html#special-booking-section" class="btn btn-gold btn-sm" style="font-size:0.85rem; padding:8px 12px; justify-content:center;">
+              <i class="fa-solid fa-bolt"></i> Instant Booking
+            </a>
+            <a href="special-horoscopic-services.html" class="btn btn-card-see-details" style="margin-top:0;">
+              See Details <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
         </div>
 
       </div>
+
+      <!-- WHAT YOU RECEIVE Showcase Banner (Elegant Feature Grid) -->
+      <div class="what-you-receive-card">
+        <div class="receive-header text-center">
+          <span class="receive-badge"><i class="fa-solid fa-om"></i> WHAT YOU RECEIVE</span>
+          <h3 class="receive-title">Grounded Guidance Built On Vedic Astronomy</h3>
+        </div>
+
+        <div class="receive-features-grid">
+          <div class="receive-feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-star-of-david"></i></div>
+            <div class="feature-content">
+              <h4>Authentic Vedic Astronomy</h4>
+              <p>7th-generation Sidhant Jyotish calculations based on exact planetary longitudes.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-compass"></i></div>
+            <div class="feature-content">
+              <h4>Transparent & Clear</h4>
+              <p>Easy-to-understand, non-fatalistic interpretations empowering your life decisions.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-crosshair"></i></div>
+            <div class="feature-content">
+              <h4>Focused Analysis</h4>
+              <p>Targeted answers tailored strictly to your specific career, health, and relationship queries.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-box">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-user-shield"></i></div>
+            <div class="feature-content">
+              <h4>Strictly Confidential</h4>
+              <p>100% private 1-on-1 personal counseling with guaranteed data privacy.</p>
+            </div>
+          </div>
+
+          <div class="receive-feature-box feature-box-full">
+            <div class="feature-icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <div class="feature-content">
+              <h4>Practical & Authentic Remedies</h4>
+              <p>Traditional Vedic solutions focusing on self-alignment, mantras, and lifestyle adjustments without superstition or fear-mongering.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="motto-footer text-center">
+          <div class="motto-pillars">STUDY • ALIGN • UNDERSTAND</div>
+          <p class="sanskrit-motto">॥ तमसो मा ज्योतिर्गमय ॥</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -761,25 +855,43 @@
     </div>
   </section>
 
-  <!-- Client Intake & Booking Modal -->
+  <!-- Client Intake & Interactive Calendar Booking Modal -->
   <div class="modal-overlay" id="bookingModal">
     <div class="modal-card glass-card">
       <button class="modal-close" id="modalCloseBtn">&times;</button>
       
       <div class="modal-header">
-        <span class="modal-icon"><i class="fa-solid fa-calendar-check"></i></span>
-        <h3>Book Consultation with Acharya Nimisha</h3>
-        <p>Please provide required client intake details for prior horoscopic calculations.</p>
+        <span class="modal-icon"><i class="fa-solid fa-calendar-days"></i></span>
+        <h3>Book Consultation & Select Time Slot</h3>
+        <p>Choose your preferred consultation date and available time slot with Acharya Nimisha.</p>
       </div>
 
       <form id="intakeForm" class="intake-form">
+        
+        <!-- Interactive Date & Slot Selector Box -->
+        <div class="booking-calendar-box">
+          <div class="form-group mb-3">
+            <label for="bookingDate"><i class="fa-solid fa-calendar-day" style="color:var(--vedic-gold);"></i> Select Consultation Date *</label>
+            <input type="date" id="bookingDate" required style="font-weight:600; font-size:1rem; padding:10px 14px;">
+          </div>
+
+          <div class="form-group mb-3">
+            <label><i class="fa-solid fa-clock" style="color:var(--vedic-gold);"></i> Select Available Time Slot *</label>
+            <div class="slots-grid" id="slotsGrid">
+              <!-- Dynamically populated via app.js -->
+            </div>
+            <input type="hidden" id="selectedSlot" required>
+            <div id="slotNotice" class="slot-notice"></div>
+          </div>
+        </div>
+
         <div class="form-group">
-          <label for="intakePackage">Selected Package / Service</label>
+          <label for="intakePackage"><i class="fa-solid fa-list-check"></i> Consultation Category *</label>
           <select id="intakePackage" required>
-            <option value="Comprehensive Birth Chart Reading (₹1,100 / 25 mins)">Package 1: Single Chart Reading (₹1,100 / 25 mins)</option>
-            <option value="Dual Chart Reading (₹2,100 / 45 mins)">Package 2: Dual Chart Reading (₹2,100 / 45 mins)</option>
-            <option value="Matchmaking & Compatibility (₹2,499 / 45 mins)">Package 3: Matchmaking & Compatibility (₹2,499 / 45 mins)</option>
-            <option value="Corporate / Custom Consultation">Corporate / Custom Family Consultation</option>
+            <option value="01 — TIME-BASED CONSULTATION (5 Mins / 10 Mins)">01 — TIME-BASED CONSULTATION (5 Mins / 10 Mins)</option>
+            <option value="02 — QUESTION-BASED CONSULTATION (3 Questions / 5 Questions)">02 — QUESTION-BASED CONSULTATION (3 Questions / 5 Questions)</option>
+            <option value="03 — FULL KUNDLI READING">03 — FULL KUNDLI READING</option>
+            <option value="04 — HOROSCOPE MATCHING / BACHON KI KUNDLI / MUHURTAM">04 — HOROSCOPE MATCHING / BACHON KI KUNDLI / MUHURTAM</option>
           </select>
         </div>
 
@@ -808,7 +920,7 @@
         <div class="form-row">
           <div class="form-group pob-autocomplete-wrapper">
             <label for="intakePobInput">Place of Birth (Type city for Lat/Long) *</label>
-            <input type="text" id="intakePobInput" placeholder="Type city (e.g. Mumbai, Janakpur, Dubai)" autocomplete="off" required>
+            <input type="text" id="intakePobInput" placeholder="Type city (e.g. Delhi, Jaipur, Kathmandu)" autocomplete="off" required>
             <input type="hidden" id="intakeLat" value="28.6139">
             <input type="hidden" id="intakeLon" value="77.2090">
             <input type="hidden" id="intakeTz" value="5.5">
@@ -820,7 +932,7 @@
           <div class="form-group">
             <label for="intakeMode">Preferred Consultation Mode *</label>
             <select id="intakeMode" required>
-              <option value="Voice Call (WhatsApp / Phone)">Voice Call (Phone / WhatsApp)</option>
+              <option value="Voice Call (Phone / WhatsApp)">Voice Call (Phone / WhatsApp)</option>
               <option value="Written PDF Report">Written Comprehensive PDF Report</option>
             </select>
           </div>
@@ -828,11 +940,13 @@
 
         <div class="form-group">
           <label for="intakeQuery">Primary Concerns / Specific Questions</label>
-          <textarea id="intakeQuery" rows="3" placeholder="Mention key focus areas (Career, Marriage timing, Health, Financial remedies, etc.)"></textarea>
+          <textarea id="intakeQuery" rows="3" placeholder="Mention key focus areas (Career, Marriage timing, Health, Financial remedies, specific questions, etc.)"></textarea>
         </div>
 
         <div class="modal-footer-btns">
-          <button type="submit" class="btn btn-whatsapp-direct full-width" id="submitWhatsapp" style="width:100%; justify-content:center; padding:12px 20px; font-size:1rem;"><i class="fa-brands fa-whatsapp"></i> Book Consultation via WhatsApp (+91 8602110010)</button>
+          <button type="submit" class="btn btn-gold full-width" id="submitWhatsapp" style="width:100%; justify-content:center; padding:12px 20px; font-size:1rem; border-radius:30px;">
+            <i class="fa-solid fa-paper-plane"></i> Send Request
+          </button>
         </div>
       </form>
     </div>
@@ -844,14 +958,22 @@
       <div class="footer-grid">
         <div class="footer-col brand-col">
           <div class="brand-logo footer-logo">
-            <i class="fa-solid fa-sun-plant-wilt"></i>
+            <img src="images/logo.jpg" alt="Nimisha Bharadwaj Logo" class="brand-logo-img footer-logo-img">
             <div>
-              <span class="brand-name">Nimisha Bhardwaj</span>
+              <span class="brand-name">Nimisha Bharadwaj</span>
               <span class="brand-title">Acharya in Sidhant Jyotish</span>
             </div>
           </div>
           <p class="footer-tagline">"Guided by Planets, Grounded in Wisdom"<br><em>तमसो मा ज्योतिर्गमय — From ignorance to inner light</em></p>
           <p class="footer-bio">Empowering individuals with mathematical Vedic clarity, removing fear, and illuminating life's path with authentic 7th-generation wisdom.</p>
+          
+          <div class="footer-social-box" style="margin-top: 16px;">
+            <span style="font-size:0.85rem; font-weight:700; color:var(--vedic-gold); display:block; margin-bottom:8px;">Follow Astrology Unfolded:</span>
+            <div style="display:flex; gap:10px;">
+              <a href="https://www.instagram.com/astrologyunfolded?igsi=YTQ5MHhjZHB0MzA=&utm_source=ig_contact_invite" target="_blank" rel="noopener" class="footer-social-btn instagram" title="Instagram (@astrologyunfolded)"><i class="fa-brands fa-instagram"></i> Instagram</a>
+              <a href="https://www.facebook.com/share/14nAa8idmRi/" target="_blank" rel="noopener" class="footer-social-btn facebook" title="Facebook Page"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+            </div>
+          </div>
         </div>
 
         <div class="footer-col">
@@ -859,8 +981,9 @@
           <ul class="footer-contact-list">
             <li><i class="fa-solid fa-phone"></i> <strong>Phone / WhatsApp:</strong> +91 8602110010</li>
             <li><i class="fa-solid fa-envelope"></i> <strong>Booking Email:</strong> n.astro3008@gmail.com</li>
-            <li><i class="fa-solid fa-building-columns"></i> <strong>Degree:</strong> Sidhant Jyotish Acharya (Central Sanskrit Univ.)</li>
-            <li><i class="fa-solid fa-user-graduate"></i> <strong>Academics:</strong> B.A. Economics, Psychology & English</li>
+            <li><i class="fa-brands fa-instagram" style="color:#E1306C;"></i> <strong>Instagram:</strong> <a href="https://www.instagram.com/astrologyunfolded?igsi=YTQ5MHhjZHB0MzA=&utm_source=ig_contact_invite" target="_blank" rel="noopener" style="color:var(--vedic-gold); text-decoration:underline;">@astrologyunfolded</a></li>
+            <li><i class="fa-brands fa-facebook" style="color:#1877F2;"></i> <strong>Facebook:</strong> <a href="https://www.facebook.com/share/14nAa8idmRi/" target="_blank" rel="noopener" style="color:var(--vedic-gold); text-decoration:underline;">Astrology Unfolded</a></li>
+            <li><i class="fa-solid fa-building-columns"></i> <strong>Degree:</strong> Sidhant Jyotish Acharya (CSU)</li>
           </ul>
         </div>
 

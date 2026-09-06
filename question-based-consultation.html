@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question-Based Consultation | Acharya Nimisha Bharadwaj</title>
+  <meta name="description" content="Get precise, focused answers to your specific life questions with Acharya Nimisha Bharadwaj. 1 Question, 3 Questions, or 5 Questions packages.">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css?v=4.0">
+  <style>
+    /* Custom Styling for Question-Based Consultation Page */
+    .tb-hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(30, 27, 75, 0.88) 100%), url('images/question-based-hero.jpg') center/cover no-repeat;
+      padding: 100px 0 80px;
+      color: #fff;
+      overflow: hidden;
+      border-bottom: 2px solid var(--vedic-gold);
+    }
+    
+    .tb-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15), transparent 60%);
+      pointer-events: none;
+    }
+
+    .tb-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: rgba(212, 175, 55, 0.18);
+      border: 1px solid var(--vedic-gold);
+      border-radius: 50px;
+      color: #FDF6E3;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .tb-hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: #FDF6E3;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 16px;
+    }
+
+    .tb-hero-desc {
+      font-size: 1.15rem;
+      color: #E2E8F0;
+      max-width: 680px;
+      line-height: 1.7;
+      margin-bottom: 30px;
+    }
+
+    .tb-hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+
+    .tb-hero-chip {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      backdrop-filter: blur(6px);
+      color: #fff;
+    }
+
+    /* Option Cards */
+    .tb-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: -40px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .tb-tier-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 2px solid #D4AF37;
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .tb-tier-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+    }
+
+    .tb-tier-header {
+      border-bottom: 1px solid #E2E8F0;
+      padding-bottom: 18px;
+      margin-bottom: 20px;
+    }
+
+    .tb-tier-badge {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #8B0032;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .tb-tier-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #1E1B4B;
+      margin: 10px 0 4px;
+    }
+
+    .tb-tier-subtitle {
+      color: #64748B;
+      font-size: 0.92rem;
+    }
+
+    .tb-tier-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+    }
+
+    .tb-tier-list li {
+      padding: 8px 0;
+      color: #334155;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tb-tier-list li i {
+      color: #D4AF37;
+    }
+
+    /* Form Container */
+    .tb-booking-container {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+      border: 1px solid #E2E8F0;
+      margin-top: 50px;
+    }
+
+    .tb-step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: #1E1B4B;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tb-step-title i {
+      color: #D4AF37;
+    }
+
+    /* Duration Radio Cards */
+    .duration-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .duration-radio-card {
+      border: 2px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: #F8FAFC;
+    }
+
+    .duration-radio-card:hover {
+      border-color: #D4AF37;
+      background: #FFFDF5;
+    }
+
+    .duration-radio-card.active {
+      border-color: #D4AF37;
+      background: #FFFDF5;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+    }
+
+    .duration-radio-card input {
+      display: none;
+    }
+
+    /* Slot Picker Grid */
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .slot-btn {
+      padding: 12px 8px;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: #1E293B;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .slot-btn:hover:not(.disabled) {
+      border-color: #D4AF37;
+      background: #FFFDF5;
+      color: #8B0032;
+    }
+
+    .slot-btn.selected {
+      border-color: #D4AF37 !important;
+      background: #1E1B4B !important;
+      color: #FDF6E3 !important;
+      box-shadow: 0 4px 12px rgba(30, 27, 75, 0.2);
+    }
+
+    .slot-btn.disabled {
+      background: #F1F5F9;
+      border-color: #E2E8F0;
+      color: #94A3B8;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .slot-notice-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.88rem;
+      color: #64748B;
+    }
+
+    .slot-notice-badge.active {
+      color: #8B0032;
+      font-weight: 600;
+    }
+
+    .booking-success-card {
+      background: #F0FDF4;
+      border: 2px solid #22C55E;
+      border-radius: 16px;
+      padding: 40px 20px;
+    }
+
+    .booking-success-card .success-icon {
+      font-size: 3.5rem;
+      color: #22C55E;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-container">
+      <a href="index.html" class="brand-logo-link">
+        <div class="brand-logo">
+          <img src="images/logo.jpg" alt="Acharya Nimisha Bhardwaj Logo" class="brand-logo-img">
+          <div class="brand-text">
+            <span class="brand-name">Acharya Nimisha Bhardwaj</span>
+            <span class="brand-tagline">Sidhant & Hora Jyotish Master</span>
+          </div>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#pricing"><i class="fa-solid fa-tags"></i> Pricing Options</a>
+        <a href="#features"><i class="fa-solid fa-list-check"></i> What You Receive</a>
+        <a href="#question-booking-section"><i class="fa-solid fa-calendar-check"></i> Book Slot</a>
+        <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="#question-booking-section" class="btn btn-gold btn-header"><i class="fa-solid fa-bolt"></i> Instant Booking</a>
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="tb-hero">
+      <div class="container">
+        <div class="tb-hero-badge">
+          <i class="fa-solid fa-clipboard-question"></i> Dedicated Question-Based Consultation
+        </div>
+        <h1 class="tb-hero-title">Targeted Answers for Your Specific Questions</h1>
+        <p class="tb-hero-desc">
+          Get direct, precise astrological insights and tailored remedies for your specific life queries. Choose between our 3 Questions Package or 5 Questions Package for in-depth planetary analysis by Acharya Nimisha Bharadwaj.
+        </p>
+        
+        <div class="tb-hero-features">
+          <span class="tb-hero-chip"><i class="fa-solid fa-check"></i> 3 Questions Package (₹500)</span>
+          <span class="tb-hero-chip"><i class="fa-solid fa-check"></i> 5 Questions Package (₹1,000)</span>
+          <span class="tb-hero-chip"><i class="fa-solid fa-check"></i> Authentic Vedic Remedies</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#question-booking-section" class="btn btn-gold btn-lg"><i class="fa-solid fa-calendar-check"></i> Book Your Slot Now</a>
+          <a href="#pricing" class="btn btn-secondary btn-lg" style="margin-left: 12px; color:#fff; border-color:rgba(255,255,255,0.4);"><i class="fa-solid fa-eye"></i> View Pricing</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Pricing Cards Section -->
+      <section id="pricing" class="section">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-tag"></i> PRICING OPTIONS</span>
+          <h2 class="section-title">Select Your Question Package</h2>
+          <p class="section-desc">Choose the number of specific questions you wish to analyze in your consultation session.</p>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+
+        <div class="tb-cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); max-width: 900px; margin-left: auto; margin-right: auto;">
+          
+          <!-- Package 1: 3 Questions -->
+          <div class="tb-tier-card">
+            <div class="tb-tier-header">
+              <span class="tb-tier-badge">Focused Query</span>
+              <div class="tb-tier-price">₹500</div>
+              <div class="tb-tier-subtitle">3 Questions Package</div>
+            </div>
+            <ul class="tb-tier-list">
+              <li><i class="fa-solid fa-check-circle"></i> Focused evaluation of 3 pre-submitted questions</li>
+              <li><i class="fa-solid fa-check-circle"></i> D1, D9, D10 Divisional Chart checks</li>
+              <li><i class="fa-solid fa-check-circle"></i> Dasha timeline & targeted remedy blueprint</li>
+              <li><i class="fa-solid fa-check-circle"></i> Live 1-on-1 virtual slot booking</li>
+            </ul>
+            <button class="btn btn-gold full-width select-tier-btn" data-count="3" data-fee="500">
+              Select 3 Questions & Book <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+          <!-- Package 2: 5 Questions -->
+          <div class="tb-tier-card">
+            <div class="tb-tier-header">
+              <span class="tb-tier-badge" style="color:#D4AF37;"><i class="fa-solid fa-star"></i> Comprehensive</span>
+              <div class="tb-tier-price">₹1,000</div>
+              <div class="tb-tier-subtitle">5 Questions Package</div>
+            </div>
+            <ul class="tb-tier-list">
+              <li><i class="fa-solid fa-check-circle"></i> Comprehensive point-by-point analysis for 5 queries</li>
+              <li><i class="fa-solid fa-check-circle"></i> Career, Marriage, Finance & Health coverage</li>
+              <li><i class="fa-solid fa-check-circle"></i> Astakvarga & Varshaphal transit mapping</li>
+              <li><i class="fa-solid fa-check-circle"></i> Complete spiritual remedial protocol</li>
+            </ul>
+            <button class="btn btn-gold full-width select-tier-btn" data-count="5" data-fee="1000">
+              Select 5 Questions & Book <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Features / What You Receive -->
+      <section id="features" class="section" style="background:var(--bg-cream-alt); padding:50px 20px; border-radius:20px; margin-top:40px;">
+        <div class="section-header text-center">
+          <span class="section-subtitle"><i class="fa-solid fa-shield-halved"></i> WHAT YOU RECEIVE</span>
+          <h2 class="section-title">Why Choose Question-Based Guidance?</h2>
+          <div class="title-divider"><span>✦</span></div>
+        </div>
+
+        <div class="features-grid-5 mt-4" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-bullseye"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">Pinpoint Focus</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">No generic readings — 100% focused strictly on your specific questions.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-clock-rotate-left"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">Dasha Timeline</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Pinpointing exact timing of favorable and challenging planetary transits.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-gem"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">Authentic Remedies</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Practical gemstones, Mantras, and Stotras to resolve planetary afflictions.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-comments"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">Direct Interaction</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Discuss your questions directly with Acharya Nimisha Bharadwaj.</p>
+          </div>
+
+          <div class="feature-card glass-card text-center" style="padding:20px;">
+            <div class="feature-icon" style="font-size:2rem; color:var(--vedic-gold); margin-bottom:12px;"><i class="fa-solid fa-lock"></i></div>
+            <h4 style="font-size:1.05rem; color:var(--cosmic-blue); margin-bottom:8px;">100% Confidential</h4>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Your birth details and life queries remain completely private and secure.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking Section -->
+      <section id="question-booking-section" class="section" style="scroll-margin-top: 100px;">
+        <div class="tb-booking-container">
+          <div class="section-header text-center" style="margin-bottom:30px;">
+            <span class="section-subtitle"><i class="fa-solid fa-calendar-plus"></i> LIVE SLOT BOOKING</span>
+            <h2 class="section-title">Book Question-Based Consultation</h2>
+            <p class="section-desc">Select your question package, choose your date and slot, and send your request.</p>
+          </div>
+
+          <!-- Booking Form -->
+          <form id="questionBookingForm">
+            
+            <!-- Step 1: Package Selection -->
+            <div class="form-block">
+              <label class="tb-step-title"><i class="fa-solid fa-list-ol"></i> Step 1: Select Question Package</label>
+              <div class="duration-options-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+                
+                <label class="duration-radio-card active">
+                  <input type="radio" name="qbCount" value="3" data-fee="500" checked>
+                  <div class="duration-title" style="font-weight:700; color:var(--cosmic-blue);">3 Questions Package</div>
+                  <div class="duration-price" style="color:var(--primary-pink-dark); font-weight:800; font-size:1.1rem;">₹500</div>
+                  <small style="color:var(--text-muted);">Focused 3 Queries Evaluation</small>
+                </label>
+
+                <label class="duration-radio-card">
+                  <input type="radio" name="qbCount" value="5" data-fee="1000">
+                  <div class="duration-title" style="font-weight:700; color:var(--cosmic-blue);">5 Questions Package</div>
+                  <div class="duration-price" style="color:var(--primary-pink-dark); font-weight:800; font-size:1.1rem;">₹1,000</div>
+                  <small style="color:var(--text-muted);">Comprehensive 5 Queries Analysis</small>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Step 2: Date & Slot Picker -->
+            <div class="form-block">
+              <label class="tb-step-title"><i class="fa-solid fa-clock"></i> Step 2: Choose Preferred Date & Time Slot</label>
+              
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="qbBookingDate">Select Date *</label>
+                  <input type="date" id="qbBookingDate" required>
+                </div>
+                <div class="form-group">
+                  <label>Selected Slot:</label>
+                  <div id="selectedSlotBadge" class="slot-notice-badge">Please click on any open slot below</div>
+                </div>
+              </div>
+
+              <div class="slots-container mt-3">
+                <label style="font-size:0.9rem; font-weight:600; color:var(--cosmic-blue);">Available Time Slots (IST)</label>
+                <div id="qbSlotsGrid" class="slots-grid">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Client Birth Details -->
+            <div class="form-block mt-4">
+              <label class="tb-step-title"><i class="fa-solid fa-user-pen"></i> Step 3: Enter Your Birth Details & Questions</label>
+              
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="qbName">Full Name *</label>
+                  <input type="text" id="qbName" placeholder="e.g. Aarav Sharma" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="qbPhone">Phone / WhatsApp Number *</label>
+                  <input type="tel" id="qbPhone" placeholder="+91 9876543210" required>
+                </div>
+              </div>
+
+              <div class="form-grid-3 mt-3">
+                <div class="form-group">
+                  <label for="qbDob">Date of Birth *</label>
+                  <input type="date" id="qbDob" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="qbTob">Time of Birth *</label>
+                  <input type="time" id="qbTob" required>
+                </div>
+
+                <div class="form-group pob-autocomplete-wrapper">
+                  <label for="qbPob">Place of Birth *</label>
+                  <input type="text" id="qbPob" placeholder="Type city (e.g. New Delhi, Janakpur, London)" autocomplete="off" required>
+                  <div class="pob-dropdown hidden" id="qbPobDropdown"></div>
+                </div>
+              </div>
+
+              <div class="form-group mt-3">
+                <label for="qbTopic">Your Specific Questions / Concerns *</label>
+                <textarea id="qbTopic" rows="4" placeholder="Please list your specific question(s) here (e.g. 1. When will I get a job change? 2. Is business or job better for me? 3. Marriage timing & partner details)..." required></textarea>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions mt-4 text-center">
+              <button type="submit" id="qbSubmitBtn" class="btn btn-gold btn-lg full-width">
+                <i class="fa-solid fa-paper-plane"></i> Send Request
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Confirmation Success Box (Hidden initially) -->
+          <div id="qbSuccessBox" class="booking-success-card hidden text-center">
+            <div class="success-icon"><i class="fa-solid fa-paper-plane"></i></div>
+            <h2>Slot Request Sent!</h2>
+            <p id="qbSuccessMessage" class="success-desc"></p>
+            
+            <div class="success-actions mt-4">
+              <a id="qbWhatsappBtn" href="#" target="_blank" class="btn btn-whatsapp btn-lg">
+                <i class="fa-brands fa-whatsapp"></i> Send Details on WhatsApp to Nimisha
+              </a>
+              <button onclick="location.reload()" class="btn btn-secondary mt-2">Send Another Request</button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col brand-col">
+          <div class="brand-logo">
+            <img src="images/logo.jpg" alt="Acharya Nimisha Bhardwaj Logo" class="brand-logo-img">
+            <span class="brand-name">Nimisha Bharadwaj</span>
+          </div>
+          <p class="footer-desc">
+            Sidhant Jyotish Acharya (Central Sanskrit University). Eliminating fears through ancient mathematical precision and empathetic guidance.
+          </p>
+          <div class="footer-socials mt-3">
+            <a href="https://www.instagram.com/astrologyunfolded?igsi=YTQ5MHhjZHB0MzA=&utm_source=ig_contact_invite" target="_blank" rel="noopener" class="footer-social-btn instagram"><i class="fa-brands fa-instagram"></i> @astrologyunfolded</a>
+            <a href="https://www.facebook.com/share/14nAa8idmRi/" target="_blank" rel="noopener" class="footer-social-btn facebook"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Direct Contact</h4>
+          <ul class="footer-contact-list">
+            <li><i class="fa-solid fa-phone"></i> <strong>Phone/WhatsApp:</strong> +91 8602110010</li>
+            <li><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> n.astro3008@gmail.com</li>
+            <li><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> India (Global Virtual Counseling)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p>&copy; 2026 Acharya Nimisha Bharadwaj. All Rights Reserved. | Sidhant Jyotish Counseling</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="city-database.js"></script>
+  <script src="app.js"></script>
+  <!-- Script for Question-Based Booking Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Place of Birth City Autocomplete Dropdown
+      if (typeof setupAutocomplete === 'function') {
+        setupAutocomplete('qbPob', 'qbPobDropdown');
+      }
+
+      const dateInput = document.getElementById('qbBookingDate');
+      const slotsGrid = document.getElementById('qbSlotsGrid');
+      const badge = document.getElementById('selectedSlotBadge');
+      const bookingForm = document.getElementById('questionBookingForm');
+      const successBox = document.getElementById('qbSuccessBox');
+      const successMsg = document.getElementById('qbSuccessMessage');
+      const whatsappBtn = document.getElementById('qbWhatsappBtn');
+
+      let selectedSlotTime = '';
+      let bookedSlots = {};
+
+      // Set min date to today
+      const today = new Date().toISOString().split('T')[0];
+      dateInput.min = today;
+      dateInput.value = today;
+
+      // Default slot templates
+      const defaultTimeSlots = [
+        "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM",
+        "02:00 PM", "02:30 PM", "03:00 PM", "04:00 PM", "04:30 PM",
+        "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM", "08:00 PM"
+      ];
+
+      // Fetch booked slots from API for selected date
+      async function fetchBookedSlots() {
+        const date = dateInput.value;
+        let unavailableList = [];
+        try {
+          const res = await fetch('/api/booked-slots?date=' + date);
+          if (res.ok) {
+            const data = await res.json();
+            unavailableList = data.booked_slots || [];
+          }
+        } catch (e) {
+          console.log('Using fallback slot logic');
+        }
+
+        slotsGrid.innerHTML = '';
+        selectedSlotTime = '';
+        badge.className = 'slot-notice-badge';
+        badge.innerHTML = 'Please click on any open slot below';
+
+        defaultTimeSlots.forEach(slot => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'slot-btn';
+          btn.textContent = slot;
+
+          if (unavailableList.includes(slot)) {
+            btn.classList.add('disabled');
+            btn.disabled = true;
+          } else {
+            btn.addEventListener('click', () => {
+              document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
+              btn.classList.add('selected');
+              selectedSlotTime = slot;
+              badge.className = 'slot-notice-badge active';
+              badge.innerHTML = `<i class="fa-solid fa-check-circle"></i> Selected Slot: <strong>${slot}</strong> on <strong>${date}</strong>`;
+            });
+          }
+          slotsGrid.appendChild(btn);
+        });
+      }
+
+      dateInput.addEventListener('change', fetchBookedSlots);
+
+      // Package Card buttons auto-select radio
+      document.querySelectorAll('.select-tier-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const count = btn.getAttribute('data-count');
+          const radio = document.querySelector(`input[name="qbCount"][value="${count}"]`);
+          if (radio) {
+            radio.checked = true;
+            document.querySelectorAll('.duration-radio-card').forEach(c => c.classList.remove('active'));
+            radio.closest('.duration-radio-card').classList.add('active');
+          }
+          document.getElementById('question-booking-section').scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // Radio card toggle styling
+      document.querySelectorAll('input[name="qbCount"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          document.querySelectorAll('.duration-radio-card').forEach(c => c.classList.remove('active'));
+          if (radio.checked) {
+            radio.closest('.duration-radio-card').classList.add('active');
+          }
+        });
+      });
+
+      // Form submission
+      bookingForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        if (!selectedSlotTime) {
+          alert('Please select an available time slot before sending your request.');
+          return;
+        }
+
+        const date = dateInput.value;
+        const countRadio = document.querySelector('input[name="qbCount"]:checked');
+        const count = countRadio ? countRadio.value : '3';
+        const fee = countRadio ? countRadio.getAttribute('data-fee') : '500';
+        const name = document.getElementById('qbName').value.trim();
+        const phone = document.getElementById('qbPhone').value.trim();
+        const dob = document.getElementById('qbDob').value;
+        const tob = document.getElementById('qbTob').value;
+        const pob = document.getElementById('qbPob').value.trim();
+        const topic = document.getElementById('qbTopic').value.trim();
+
+        if (!topic) {
+          alert('Please list your specific questions before sending your request.');
+          return;
+        }
+
+        // 1) Save to Spreadsheet CSV, Google Sheet Webhook & Server JSON
+        try {
+          await fetch('/api/book-slot', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              date,
+              slot: selectedSlotTime,
+              service: `Question-Based Consultation (${count} Question${count > 1 ? 's' : ''} - ₹${fee})`,
+              name,
+              phone,
+              dob,
+              tob,
+              pob,
+              query: topic || `${count} Question Consultation Package`
+            })
+          });
+        } catch (e) {
+          console.log('Booked locally');
+        }
+
+        // 2) Trigger WhatsApp automatically (MANDATORY & MUST)
+        const waMessage = 
+          `Namaste Acharya Nimisha Ji,\n\nI am requesting a Question-Based Consultation Booking:\n\n` +
+          `• Package: ${count} Question(s) (₹${fee})\n` +
+          `• Requested Date: ${date}\n` +
+          `• Requested Slot: ${selectedSlotTime}\n\n` +
+          `Client Details:\n` +
+          `- Name: ${name}\n` +
+          `- Phone: ${phone}\n` +
+          `- DOB: ${dob} | TOB: ${tob}\n` +
+          `- POB: ${pob}\n` +
+          `- Specific Question(s): ${topic || 'Question details to be discussed'}\n\n` +
+          `Please review and confirm my slot request!`;
+
+        const waUrl = `https://wa.me/918602110010?text=${encodeURIComponent(waMessage)}`;
+        
+        // Mandatorily open WhatsApp in new tab
+        window.open(waUrl, '_blank');
+        whatsappBtn.href = waUrl;
+
+        // Show Success Box
+        bookingForm.classList.add('hidden');
+        successBox.classList.remove('hidden');
+        
+        successMsg.innerHTML = `If you have submitted your request on WhatsApp, please wait for our team to revert back to you.<br><br>If you are yet to submit the request, please click the button below to submit your request.`;
+      });
+
+      fetchBookedSlots();
+    });
+  </script>
+</body>
+</html>

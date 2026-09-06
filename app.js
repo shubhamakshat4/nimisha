@@ -163,9 +163,9 @@ function setupAutocomplete(inputId, dropdownId, latId, lonId, tzId, badgeId) {
           const tz = parseFloat(item.getAttribute('data-tz'));
 
           input.value = display;
-          latInput.value = lat;
-          lonInput.value = lon;
-          tzInput.value = tz;
+          if (latInput) latInput.value = lat;
+          if (lonInput) lonInput.value = lon;
+          if (tzInput) tzInput.value = tz;
 
           if (badge) {
             badge.innerHTML = `<i class="fa-solid fa-compass"></i> Lat: ${lat.toFixed(4)}°, Lon: ${lon.toFixed(4)}° (UTC ${tz >= 0 ? '+' + tz : tz})`;
@@ -971,18 +971,116 @@ function initRashiWheel() {
 /**
  * Client Intake & Booking Modal Workflow
  */
+/**
+ * Client Intake & Interactive Calendar Booking Modal Workflow
+ */
+const CONSULTATION_OPTIONS = {
+  'time-based': {
+    title: 'Time-Based Consultation',
+    items: [
+      { id: 'tb_5', name: '5 Minutes Consultation', duration: '5 Mins Call', fee: '₹350', desc: 'Direct, focused single-topic guidance', icon: 'fa-stopwatch' },
+      { id: 'tb_10', name: '10 Minutes Consultation', duration: '10 Mins Call', fee: '₹700', desc: 'Extended call for detailed single query', icon: 'fa-stopwatch' }
+    ]
+  },
+  'question-based': {
+    title: 'Question-Based Consultation',
+    items: [
+      { id: 'qb_3', name: '3 Questions Analysis', duration: '3 Specific Queries', fee: '₹500', desc: 'Pre-share 3 questions for natal chart evaluation', icon: 'fa-list-check' },
+      { id: 'qb_5', name: '5 Questions Analysis', duration: '5 Specific Queries', fee: '₹1,000', desc: 'Pre-share 5 questions for deep planetary answers', icon: 'fa-list-check' }
+    ]
+  },
+  'full-reading': {
+    title: 'Full Birth Chart Reading',
+    items: [
+      { id: 'fr_full', name: 'Comprehensive Birth Chart Reading', duration: 'Full Life Blueprint', fee: '₹2,500', desc: 'Deep dive into D1, D9, D10 charts, Dasha & Remedies', icon: 'fa-book-open' }
+    ]
+  },
+  'special-services': {
+    title: 'Special Horoscopic Services',
+    items: [
+      { id: 'sp_matching', name: 'Horoscope Matching (36 Guna Milan)', duration: 'Marital Compatibility', fee: '₹501', desc: '36 Guna Milan, Manglik & Nadi Dosha Check', icon: 'fa-heart' },
+      { id: 'sp_child', name: 'Child Horoscope Guidance', duration: 'Child Planetary Strengths', fee: '₹501', desc: 'Child education, health & aptitude alignment', icon: 'fa-baby' },
+      { id: 'sp_muhurtam', name: 'Sacred Muhurtam Selection', duration: 'Auspicious Timing', fee: '₹501', desc: 'Auspicious timing selection for marriage, business, etc.', icon: 'fa-calendar' }
+    ]
+  }
+};
+
+const ALL_SLOTS = [
+  '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
+  '02:00 PM', '02:30 PM', '04:00 PM', '04:30 PM',
+  '06:00 PM', '06:30 PM', '07:30 PM', '08:00 PM'
+];
+
 function initBookingModal() {
   const modal = document.getElementById('bookingModal');
   const closeBtn = document.getElementById('modalCloseBtn');
-  const openBtns = document.querySelectorAll('.open-booking-modal, .select-package-btn');
+  const openBtns = document.querySelectorAll('.open-booking-modal');
+  const dateInput = document.getElementById('bookingDate');
+  const selectedSlotInput = document.getElementById('selectedSlot');
+  const slotNotice = document.getElementById('slotNotice');
+  const categoryTabs = document.querySelectorAll('.category-tab');
+
+  // Set min date to today
+  const today = new Date().toISOString().split('T')[0];
+  if (dateInput) {
+    dateInput.min = today;
+    if (!dateInput.value) {
+      dateInput.value = today;
+    }
+
+    // Load slots on date change
+    dateInput.addEventListener('change', () => {
+      if (selectedSlotInput) selectedSlotInput.value = '';
+      if (slotNotice) {
+        slotNotice.className = 'slot-notice-badge';
+        slotNotice.innerHTML = '<i class="fa-solid fa-info-circle"></i> Please click a slot below';
+      }
+      loadAndRenderSlots(dateInput.value);
+    });
+  }
+
+  // Handle category tabs click
+  categoryTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      categoryTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const cat = tab.getAttribute('data-cat');
+      renderSubOptions(cat);
+    });
+  });
 
   openBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pkg = btn.getAttribute('data-pkg');
-      if (pkg) {
-        document.getElementById('intakePackage').value = pkg;
+    btn.addEventListener('click', (e) => {
+      const cat = btn.getAttribute('data-category') || 'time-based';
+      if (cat === 'time-based') {
+        window.location.href = 'time-based-consultation.html#time-booking-section';
+        return;
       }
-      modal.classList.add('active');
+      if (cat === 'question-based') {
+        window.location.href = 'question-based-consultation.html#question-booking-section';
+        return;
+      }
+      if (cat === 'full-reading') {
+        window.location.href = 'full-birth-chart-reading.html#chart-booking-section';
+        return;
+      }
+      if (cat === 'special-services') {
+        window.location.href = 'special-horoscopic-services.html#special-booking-section';
+        return;
+      }
+
+      if (modal) {
+        modal.classList.add('active');
+
+        // Activate tab
+        categoryTabs.forEach(t => {
+          if (t.getAttribute('data-cat') === cat) t.classList.add('active');
+          else t.classList.remove('active');
+        });
+
+        renderSubOptions(cat);
+        if (dateInput) loadAndRenderSlots(dateInput.value || today);
+      }
     });
   });
 
@@ -997,25 +1095,129 @@ function initBookingModal() {
   });
 
   const intakeForm = document.getElementById('intakeForm');
-    const btnWa = document.getElementById('submitWhatsapp');
-    if (btnWa) {
-      btnWa.addEventListener('click', (e) => {
-        e.preventDefault();
-        sendBooking('whatsapp');
-      });
-    }
-
-    const btnEmail = document.getElementById('submitEmail');
-    if (btnEmail) {
-      btnEmail.addEventListener('click', (e) => {
-        e.preventDefault();
-        sendBooking('email');
-      });
-    }
+  if (intakeForm) {
+    intakeForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      sendBooking('whatsapp');
+    });
+  }
 }
 
-function sendBooking(type) {
-  const pkg = document.getElementById('intakePackage').value;
+function renderSubOptions(catKey) {
+  const container = document.getElementById('suboptionsGrid');
+  const selectedSubInput = document.getElementById('selectedSubOption');
+  const intakePkgInput = document.getElementById('intakePackage');
+  if (!container) return;
+
+  const data = CONSULTATION_OPTIONS[catKey] || CONSULTATION_OPTIONS['time-based'];
+  container.innerHTML = '';
+
+  data.items.forEach((item, index) => {
+    const card = document.createElement('div');
+    card.className = `suboption-card ${index === 0 ? 'suboption-selected' : ''}`;
+    card.innerHTML = `
+      <div class="suboption-header">
+        <span class="suboption-name"><i class="fa-solid ${item.icon}"></i> ${item.name}</span>
+        <span class="suboption-fee">${item.fee}</span>
+      </div>
+      <div class="suboption-details">${item.duration} &bull; ${item.desc}</div>
+    `;
+
+    if (index === 0) {
+      const formattedValue = `${item.name} (${item.fee})`;
+      if (selectedSubInput) selectedSubInput.value = formattedValue;
+      if (intakePkgInput) intakePkgInput.value = formattedValue;
+    }
+
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.suboption-card').forEach(c => c.classList.remove('suboption-selected'));
+      card.classList.add('suboption-selected');
+      const formattedValue = `${item.name} (${item.fee})`;
+      if (selectedSubInput) selectedSubInput.value = formattedValue;
+      if (intakePkgInput) intakePkgInput.value = formattedValue;
+    });
+
+    container.appendChild(card);
+  });
+}
+
+function loadAndRenderSlots(dateStr) {
+  const slotsGrid = document.getElementById('slotsGrid');
+  const slotNotice = document.getElementById('slotNotice');
+  if (!slotsGrid) return;
+
+  const selectedSlotInput = document.getElementById('selectedSlot');
+
+  // Immediately render default slots
+  renderSlotsHTML(['10:30 AM', '04:00 PM', '06:30 PM'], dateStr);
+
+  // Fetch updated booked slots from backend asynchronously
+  fetch(`/api/booked-slots?date=${dateStr}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.booked_slots) {
+        renderSlotsHTML(data.booked_slots, dateStr);
+      }
+    })
+    .catch(err => {
+      console.warn("Using default slot availability:", err);
+    });
+}
+
+function renderSlotsHTML(bookedSlots, dateStr) {
+  const slotsGrid = document.getElementById('slotsGrid');
+  const slotNotice = document.getElementById('slotNotice');
+  const selectedSlotInput = document.getElementById('selectedSlot');
+  if (!slotsGrid) return;
+
+  slotsGrid.innerHTML = '';
+
+  ALL_SLOTS.forEach(slot => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    const isBooked = bookedSlots.includes(slot);
+
+    if (isBooked) {
+      btn.className = 'slot-btn slot-booked';
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-lock"></i> ${slot}`;
+    } else {
+      btn.className = 'slot-btn slot-available';
+      if (selectedSlotInput && selectedSlotInput.value === slot) {
+        btn.classList.add('slot-selected');
+      }
+      btn.innerHTML = `<i class="fa-solid fa-clock"></i> ${slot}`;
+      
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('slot-selected'));
+        btn.classList.add('slot-selected');
+        if (selectedSlotInput) selectedSlotInput.value = slot;
+        if (slotNotice) {
+          slotNotice.className = 'slot-notice-badge slot-notice-active';
+          slotNotice.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>${slot}</strong> on ${dateStr}`;
+        }
+      });
+    }
+
+    slotsGrid.appendChild(btn);
+  });
+}
+
+async function sendBooking(type) {
+  const date = document.getElementById('bookingDate')?.value || new Date().toISOString().split('T')[0];
+  const slot = document.getElementById('selectedSlot')?.value;
+  const plan = document.getElementById('selectedSubOption')?.value || document.getElementById('intakePackage')?.value;
+
+  if (!plan) {
+    alert("Please select a consultation plan option.");
+    return;
+  }
+
+  if (!slot) {
+    alert("Please click and select an available time slot before submitting your booking.");
+    return;
+  }
+
   const name = document.getElementById('intakeName').value || 'Client';
   const prof = document.getElementById('intakeProfession').value || 'N/A';
   const dob = document.getElementById('intakeDob').value || 'N/A';
@@ -1026,13 +1228,34 @@ function sendBooking(type) {
   const mode = document.getElementById('intakeMode').value || 'Voice Call';
   const query = document.getElementById('intakeQuery').value || 'General Consultation';
 
-  const message = `Namaste Acharya Nimisha Ji,\n\nI would like to book an astrological consultation.\n\n*Intake Details:*\n- *Package:* ${pkg}\n- *Full Name:* ${name}\n- *Profession:* ${prof}\n- *Date of Birth:* ${dob}\n- *Time of Birth:* ${tob}\n- *Place of Birth:* ${pob} (Lat: ${lat}, Lon: ${lon})\n- *Consultation Mode:* ${mode}\n- *Primary Concerns:* ${query}\n\nLooking forward to your guidance!`;
-
-  if (type === 'whatsapp') {
-    const waUrl = `https://wa.me/918602110010?text=${encodeURIComponent(message)}`;
-    window.open(waUrl, '_blank');
-  } else {
-    const mailUrl = `mailto:n.astro3008@gmail.com?subject=${encodeURIComponent(`Consultation Booking - ${name}`)}&body=${encodeURIComponent(message)}`;
-    window.location.href = mailUrl;
+  // Persist slot booking to server backend
+  try {
+    await fetch('/api/book-slot', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        date: date,
+        slot: slot,
+        option: plan,
+        name: name,
+        phone: 'N/A',
+        dob: dob,
+        tob: tob,
+        pob: pob,
+        query: query
+      })
+    });
+  } catch (e) {
+    console.warn("Backend booking persistence notice:", e);
   }
+
+  const message = `Namaste Acharya Nimisha Ji,\n\nI would like to book a Consultation Session.\n\n📋 *Selected Plan:* ${plan}\n📅 *Date:* ${date}\n⏰ *Time Slot:* ${slot}\n\n*Client Details:*\n- *Full Name:* ${name}\n- *Occupation:* ${prof}\n- *Date of Birth:* ${dob}\n- *Time of Birth:* ${tob}\n- *Place of Birth:* ${pob} (Lat: ${lat}, Lon: ${lon})\n- *Preferred Mode:* ${mode}\n- *Focus / Questions:* ${query}\n\nLooking forward to your guidance!`;
+
+  const waUrl = `https://wa.me/918602110010?text=${encodeURIComponent(message)}`;
+  window.open(waUrl, '_blank');
+
+  // Re-render slots to lock newly booked slot
+  setTimeout(() => {
+    loadAndRenderSlots(date);
+  }, 1000);
 }
